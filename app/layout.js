@@ -8,6 +8,7 @@ export const metadata = {
     slogan: 'THE PATH TO SUCESS',
     description: 'GradePath is a platform that helps students find the best path to success.',
     authors: [{ name: 'Thomas Stephens' }, { name: 'Mathew Mann' }, { name: 'James Williams' }],
+    icon: '/GradePathLogo.svg',
 }
 
 export default function RootLayout({ children }) {
