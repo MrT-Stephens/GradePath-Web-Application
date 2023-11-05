@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\app\\register",
     "\\app\\[id]"
   ],
-  "SelectedNode": "\\app\\[id]",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

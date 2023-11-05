@@ -12,7 +12,7 @@ export default function Register() {
 
     const pbClient = new PocketBase('http://localhost:8090');
 
-    const handelSubmit = async () => {
+    const handelSubmit = async() => {
         try {
             await pbClient.collection('users').create({
                 "email": email,
