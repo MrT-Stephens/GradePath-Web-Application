@@ -8,7 +8,7 @@ export default function Home() {
             <h1 className="text-9xl font-bold text-center">
                 {metadata.title}
             </h1>
-            <h3 className="text-4xl font-bold text-center">
+            <h3 className="text-4xl font-bold text-center text-[#545454] dark:text-[#A6A6A6]">
                 {metadata.slogan}
             </h3>
             <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-center p-10">
