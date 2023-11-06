@@ -2,9 +2,11 @@
   "ExpandedNodes": [
     "",
     "\\app",
+    "\\app\\login",
     "\\app\\register",
-    "\\app\\[id]"
+    "\\app\\user",
+    "\\app\\user\\[id]"
   ],
-  "SelectedNode": "\\app\\[id]\\page.js",
+  "SelectedNode": "\\app\\login\\login-form.js",
   "PreviewInSolutionExplorer": false
 }
