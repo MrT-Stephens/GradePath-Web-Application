@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import PocketBase from 'pocketbase'
+import { useRouter } from 'next/navigation'
 
 export default function Register() {
     const [email, setEmail] = useState('');
@@ -11,21 +12,34 @@ export default function Register() {
     const [lastname, setLastname] = useState('');
 
     const pbClient = new PocketBase('http://localhost:8090');
+    const router = useRouter();
 
-    const handelSubmit = async() => {
-        try {
-            await pbClient.collection('users').create({
-                "email": email,
-                "emailVisibility": true,
-                "password": password,
-                "passwordConfirm": confirm,
-                "firstname": firstname,
-                "lastname": lastname
-            });
-        } catch (error) {
+    const handelSubmit = async (e) => {
+        e.preventDefault();
+
+        await pbClient.collection('users').create({
+            "email": email,
+            "emailVisibility": true,
+            "password": password,
+            "passwordConfirm": confirm,
+            "firstname": firstname,
+            "lastname": lastname
+        }).then((response) => {
+            setEmail('');
+            setPassword('');
+            setConfirm('');
+            setFirstname('');
+            setLastname('');
+            router.push(`/user/${response.id}`);
+        }).catch((error) => {
             alert(error);
+            setEmail('');
+            setPassword('');
+            setConfirm('');
+            setFirstname('');
+            setLastname('');
             console.log(error);
-        }
+        });
     }
 
     return (

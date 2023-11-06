@@ -2,6 +2,8 @@
 import { metadata } from './layout'
 
 export default function Home() {
+    const userId = 'guest';
+
     return (
         <main className="flex flex-col min-h-screen items-center justify-center p-10">
             <Image src={metadata.icon} alt="GradePath Logo" width={500} height={500} />
@@ -23,7 +25,7 @@ export default function Home() {
                         Sign in or create an account to access your GradePath dashboard and save your pathway.
                     </p>
                 </a>
-                <a href="/guest" className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30">
+                <a href={`/user/${userId}`} className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30">
                     <h2 className="mb-3 text-2xl font-semibold">
                         Guest {' '}
                         <span className="inline-block transition-transform group-hover:translate-x-5 motion-reduce:transform-none">
