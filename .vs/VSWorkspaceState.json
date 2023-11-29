@@ -1,7 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\app"
+    "\\app",
+    "\\app\\user",
+    "\\app\\user\\[id]",
+    "\\app\\user\\[id]\\dashboard"
   ],
   "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
