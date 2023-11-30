@@ -5,7 +5,7 @@ async function getUserName(userId) {
 
     const user = await pocketbase.collection('users').getOne(userId);
 
-    return `${user.firstname} ${user.lastname}`;
+    return `${user.userFName} ${user.userLName}`;
 }
 
 export default async function Page({ params }) {
