@@ -5,10 +5,10 @@ export default function Page() {
     return (
         <div>
             {/* Navigation Bar */}
-            <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 flex items-center justify-between">
+            <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 grid grid-cols-3">
+                {/* Left Navbar buttons */}
                 <div className="flex items-center">
-                    {/* Your Navbar buttons go here */}
-                    <button className="mr-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
+                    <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
                         Accessibility
                     </button>
                     <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
@@ -16,17 +16,16 @@ export default function Page() {
                     </button>
                 </div>
 
-                {/*flex-grow flex items-center justify-center*/}
-                <div className="flex-grow"></div> {/* Takes up remaining space, pushing the following content to the right */}
+                {/* Centered Logo */}
+                <div className="flex items-center justify-center col-span-1">
+                    <a href="/">
+                        {/* Centered Image */}
+                        <Image src={metadata.icon} alt="GradePath Logo" width={50} height={80} />
+                    </a>
+                </div>
 
-                <a href="/" className="mx-auto">
-                    {/* Centered Image */}
-                    <Image src={metadata.icon} alt="GradePath Logo" width={50} height={80} />
-                </a>
-                <div className="flex-grow"></div> 
-
-                <div className="flex items-center ml-auto">
-                    {/* Your other Navbar button goes here */}
+                {/* Right Navbar button */}
+                <div className="flex items-center justify-end">
                     <button className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
                         Settings
                     </button>
