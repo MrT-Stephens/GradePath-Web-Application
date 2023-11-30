@@ -2,9 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\app",
-    "\\app\\login",
-    "\\app\\register"
+    "\\app\\user",
+    "\\app\\user\\[id]",
+    "\\app\\user\\[id]\\account"
   ],
-  "SelectedNode": "\\app\\user",
+  "SelectedNode": "\\app\\user\\[id]\\account",
   "PreviewInSolutionExplorer": false
 }
