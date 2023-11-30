@@ -14,17 +14,20 @@ export default function Login() {
     const handelSubmit = async (e) => {
         e.preventDefault();
 
-        await pbClient.collection('users').authWithPassword(email, password
-        ).then((response) => {
-            setEmail('');
-            setPassword('');
-            router.push(`/user/${response.record.id}`);
-        }).catch((error) => {
+        var response;
+
+        try {
+            response = await pbClient.collection('users').authWithPassword(email, password);
+        }
+        catch (error) {
             alert(error);
             setEmail('');
             setPassword('');
             console.log(error);
-        });
+            return;
+        }
+
+        router.push(`/user/${response.record.id}`);
     }
 
     return (
