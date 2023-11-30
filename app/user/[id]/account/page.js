@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import PocketBase from 'pocketbase';
 import { metadata } from '../../../layout';
 
 async function getUserName(userId) {
