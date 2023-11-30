@@ -8,7 +8,7 @@ export default function Page() {
             <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 grid grid-cols-3">
                 {/* Left Navbar buttons */}
                 <div className="flex items-center">
-                    <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
+                    <button className="mr-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
                         Accessibility
                     </button>
                     <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
