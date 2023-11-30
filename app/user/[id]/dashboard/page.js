@@ -1,28 +1,40 @@
-import React from 'react';
+import Image from 'next/image';
+import { metadata } from '../../../layout';
 
 export default function Page() {
     return (
         <div>
             {/* Navigation Bar */}
-            <nav className="bg-gradient-to-r from-green-400 to-blue-500 p-4">
-                <div className="container mx-auto flex justify-between items-center">
-                    <div className="flex space-x-2">
-                        <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
-                            Accessibility
-                        </button>
-                        <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
-                            Policies
-                        </button>
-                    </div>
-                    <div className="flex">
-                        <div className="ml-auto">
-                            <button className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
-                                Settings
-                            </button>
-                        </div>
-                    </div>
+            <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 flex items-center justify-between">
+                <div className="flex items-center">
+                    {/* Your Navbar buttons go here */}
+                    <button className="mr-2 text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
+                        Accessibility
+                    </button>
+                    <button className="text-white font-bold py-2 px-4 rounded bg-blue-500 hover:bg-blue-600">
+                        Policies
+                    </button>
+                </div>
+
+                {/*flex-grow flex items-center justify-center*/}
+                <div className="flex-grow"></div> {/* Takes up remaining space, pushing the following content to the right */}
+
+                <a href="/" className="mx-auto">
+                    {/* Centered Image */}
+                    <Image src={metadata.icon} alt="GradePath Logo" width={50} height={80} />
+                </a>
+                <div className="flex-grow"></div> 
+
+                <div className="flex items-center ml-auto">
+                    {/* Your other Navbar button goes here */}
+                    <button className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
+                        Settings
+                    </button>
                 </div>
             </nav>
+
+            {/* Line break between Navbar and Content */}
+            <div className="h-1 bg-gradient-to-r from-green-500 to-blue-600"></div>
 
             {/* Main Content */}
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
@@ -38,14 +50,14 @@ export default function Page() {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Username:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">JohnDoe</p>
+                                    <p className="text-xl text-white font-bold">JohnSmith</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Email:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">JohnDoe@example.com</p>
+                                    <p className="text-xl text-white font-bold">JohnSmith@example.com</p>
                                 </div>
                             </div>
 
@@ -59,25 +71,40 @@ export default function Page() {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Last Name:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">Doe</p>
+                                    <p className="text-xl text-white font-bold">Smith</p>
                                 </div>
                             </div>
+
+                            <div className="mb-6">
+                                <p className="text-lg text-white">Date of Birth:</p>
+                                <div className="rounded-lg bg-gray-800 p-4">
+                                    <p className="text-xl text-white font-bold">XX/XX/XX</p>
+                                </div>
+                            </div>
+                            
                         </div>
 
                         {/* Right Column */}
                         <div className="mb-6" style={{ paddingRight: '20px' }}>
                             <div style={{ height: '67px' }}></div>
                             <div className="mb-6">
-                                <p className="text-lg text-white">Address Line:</p>
+                                <p className="text-lg text-white">Address Line 1:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
                                     <p className="text-xl text-white font-bold">26 Hill Crescent</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
+                                <p className="text-lg text-white">Address Line 2:</p>
+                                <div className="rounded-lg bg-gray-800 p-4">
+                                    <p className="text-xl text-white font-bold">N/A</p>
+                                </div>
+                            </div>
+
+                            <div className="mb-6">
                                 <p className="text-lg text-white">City:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">Somecity</p>
+                                    <p className="text-xl text-white font-bold">CF38 4LL</p>
                                 </div>
                             </div>
 
