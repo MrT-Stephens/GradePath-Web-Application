@@ -46,7 +46,7 @@ export default async function Page({ params }) {
             {/* Main Content */}
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
                 {/* Account Information Panel */}
-                <div className="relative w-120 h-140 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-md overflow-hidden">
+                <div className="relative w-5/12 h-1/2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-md overflow-hidden mb-8">
                     <div className="p-8 text-white grid grid-cols-2 gap-8">
                         {/* Left Column */}
                         <div className="mb-6">
@@ -88,7 +88,7 @@ export default async function Page({ params }) {
                                     <p className="text-xl text-white font-bold">XX/XX/XX</p>
                                 </div>
                             </div>
-                            
+
                         </div>
 
                         {/* Right Column */}
@@ -97,7 +97,7 @@ export default async function Page({ params }) {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Address Line 1:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">26 Hill Crescent</p>
+                                    <p className="text-xl text-white font-bold">28 Hill Crescent</p>
                                 </div>
                             </div>
 
@@ -139,6 +139,34 @@ export default async function Page({ params }) {
                         className="absolute inset-0 border-4"
                         style={{
                             borderImage: 'linear-gradient(to right, #68D391, #4299E1) 1',
+                            borderImageSlice: 1,
+                        }}
+                    ></div>
+                </div>
+
+                {/* Account Deletion Panel */}
+                <div className="relative w-5/12 h-1/2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-md overflow-hidden mb-8">
+                    <div className="p-8 text-white grid grid-cols-2 gap-8">
+                        {/* Left Column */}
+                        <div className="mb-6">
+                            <h2 className="text-3xl font-bold mb-4 mt-4">
+                                Delete Account
+                            </h2>
+                        </div>
+                    </div>
+
+                    {/* Edit and Save buttons */}
+                    <div className="flex justify-center items-end mt-4 space-x-2 mb-4">
+                        <button className="bg-red-500 hover:bg-red-800 text-white font-bold py-2 px-4 rounded">
+                            Delete
+                        </button>
+                    </div>
+
+                    {/* Gradient effect on the border */}
+                    <div
+                        className="absolute inset-0 border-4"
+                        style={{
+                            borderImage: 'linear-gradient(to right, #FF0000, #FF0000) 1',
                             borderImageSlice: 1,
                         }}
                     ></div>
