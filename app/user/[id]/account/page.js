@@ -7,13 +7,22 @@ async function getUserName(userId) {
 
     const user = await pocketbase.collection('users').getOne(userId);
 
-    return `${user.userFName} ${user.userLName}`;
+    return user;
 }
 
 export default async function Page({ params }) {
     const { id } = params;
 
-    const userName = (id === 'guest') ? 'Guest' : await getUserName(id);
+    var user;
+    var userName;
+
+    if (id === 'guest') {
+        userName = 'Guest';
+    }
+    else {
+        user = await getUserName(id);
+        userName = `${user.userFName} ${user.userLName}`;
+    }
 
     return (
         <div>
@@ -57,35 +66,35 @@ export default async function Page({ params }) {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Username:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">JohnSmith</p>
+                                    <p className="text-xl text-white font-bold">{user.verified ? 'True' : 'False'}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Email:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">JohnSmith@example.com</p>
+                                    <p className="text-xl text-white font-bold">{user.email}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">First Name:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">John</p>
+                                    <p className="text-xl text-white font-bold">{user.userFName}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Last Name:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">Smith</p>
+                                    <p className="text-xl text-white font-bold">{user.userLName}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Date of Birth:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">XX/XX/XX</p>
+                                    <p className="text-xl text-white font-bold">{user.userDoB}</p>
                                 </div>
                             </div>
 
@@ -97,28 +106,28 @@ export default async function Page({ params }) {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Address Line 1:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">28 Hill Crescent</p>
+                                    <p className="text-xl text-white font-bold">{user.userAddressLine1}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Address Line 2:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">N/A</p>
+                                    <p className="text-xl text-white font-bold">{user.userAddressLine2}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">City:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">CF38 4LL</p>
+                                    <p className="text-xl text-white font-bold">{user.userCity}</p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Postcode:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">CF38 4LL</p>
+                                    <p className="text-xl text-white font-bold">{user.userPostcode}</p>
                                 </div>
                             </div>
                         </div>
