@@ -2,6 +2,9 @@ import Image from 'next/image';
 import PocketBase from 'pocketbase';
 import { metadata } from '../../../layout';
 
+
+// Access Point : http://localhost:3000/user/guest/account
+
 async function getUserName(userId) {
     const pocketbase = new PocketBase('http://127.0.0.1:8090');
 
@@ -62,13 +65,6 @@ export default async function Page({ params }) {
                             <h2 className="text-3xl font-bold mb-4 mt-4">
                                 Account Information
                             </h2>
-
-                            <div className="mb-6">
-                                <p className="text-lg text-white">Username:</p>
-                                <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.verified ? 'True' : 'False'}</p>
-                                </div>
-                            </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Email:</p>
@@ -141,6 +137,52 @@ export default async function Page({ params }) {
                         <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
                             Save
                         </button>
+                    </div>
+
+                    {/* Gradient effect on the border */}
+                    <div
+                        className="absolute inset-0 border-4"
+                        style={{
+                            borderImage: 'linear-gradient(to right, #68D391, #4299E1) 1',
+                            borderImageSlice: 1,
+                        }}
+                    ></div>
+                </div>
+
+                {/* Account Security Panel */}
+                <div className="relative w-5/12 h-1/2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-md overflow-hidden mb-8">
+                    <div className="p-8 text-white grid grid-cols-2 gap-8">
+                        {/* Left Column */}
+                        <div className="mb-6">
+                            <h2 className="text-3xl font-bold mb-4 mt-4">
+                                Account Security
+                            </h2>
+
+                            <div className="mb-6">
+                                <p className="text-lg text-white">Verification Status:</p>
+                                <div className="rounded-lg bg-gray-800 p-4">
+                                    <p className="text-xl text-white font-bold">{user.verified ? 'Verified' : 'Not Verified'}</p>
+                                </div>
+                            </div>
+
+                            <div className="mb-6">
+                                <p className="text-lg text-white">Password:</p>
+                                <div className="rounded-lg bg-gray-800 p-4">
+                                    <p className="text-xl text-white font-bold">********</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Column */}
+                        <div className="mb-6">
+                            <div style={{ height: '103px' }}></div>
+                            <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded mb-20">
+                                Request Verification Email
+                            </button>
+                            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mb-8">
+                                Change Password
+                            </button>
+                        </div>
                     </div>
 
                     {/* Gradient effect on the border */}
