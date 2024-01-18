@@ -1,19 +1,14 @@
 import Image from 'next/image';
-import PocketBase from 'pocketbase';
-import { metadata } from '../../layout';
+import db from '../../(db)/index';
+import { cookies } from 'next/headers'
 
-async function getUserName(userId) {
-    const pocketbase = new PocketBase('http://127.0.0.1:8090');
+const GetUserName = async () => {
+    const user = await db.getUser(cookies());
+    return user?.userFName;
+};
 
-    const user = await pocketbase.collection('users').getOne(userId);
-
-    return `${user.userFName} ${user.userLName}`;
-}
-
-export default async function Page({ params }) {
-    const { id } = params;
-
-    const userName = (id === 'guest') ? 'Guest' : await getUserName(id);
+export default async function Page() {
+    const userName = await GetUserName();
 
     return (
         <div>
@@ -28,15 +23,15 @@ export default async function Page({ params }) {
                 <div className="flex items-center justify-center col-span-1">
                     <a href="/">
                         {/* Centered Image */}
-                        <Image src={metadata.icon} alt="GradePath Logo" width={50} height={80} />
+                        <Image src="/GradePathLogo.svg" alt="GradePath Logo" width={50} height={80} />
                     </a>
                 </div>
 
                 {/* Right Navbar button */}
                 <div className="flex items-center justify-end">
-                    <button className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
-                        Settings
-                    </button>
+                    <a href="/user/main/account" className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
+                        Account Settings
+                    </a>
                 </div>
             </nav>
 

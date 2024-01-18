@@ -1,31 +1,20 @@
 import Image from 'next/image';
-import PocketBase from 'pocketbase';
+import db from '../../../(db)/index';
+import { cookies } from 'next/headers';
 import { metadata } from '../../../layout';
 
 
 // Access Point : http://localhost:3000/user/guest/account
 
-async function getUserName(userId) {
-    const pocketbase = new PocketBase('http://127.0.0.1:8090');
-
-    const user = await pocketbase.collection('users').getOne(userId);
+async function getUserData() {
+    const user = await db.getUser(cookies());
 
     return user;
 }
 
-export default async function Page({ params }) {
-    const { id } = params;
+export default async function Page() {
 
-    var user;
-    var userName;
-
-    if (id === 'guest') {
-        userName = 'Guest';
-    }
-    else {
-        user = await getUserName(id);
-        userName = `${user.userFName} ${user.userLName}`;
-    }
+    const user = await getUserData();
 
     return (
         <div>
@@ -33,7 +22,7 @@ export default async function Page({ params }) {
             <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 grid grid-cols-3">
                 {/* Left Navbar buttons */}
                 <div className="flex items-center">
-                    <h1 className="text-white font-bold py-2 px-4 rounded bg-blue-500">Hello, {userName}!</h1>
+                    <h1 className="text-white font-bold py-2 px-4 rounded bg-blue-500">Hello, {user.userFName + " " + user.userLName}!</h1>
                 </div>
 
                 {/* Centered Logo */}

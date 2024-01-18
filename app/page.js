@@ -14,7 +14,7 @@ export default function Home() {
                 {metadata.slogan}
             </h3>
             <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-2 lg:text-center p-10">
-                <a href="/login" className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
+                <a href="/auth/login" className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30">
                     <h2 className="mb-3 text-2xl font-semibold">
                         Login {' '}
                         <span className="inline-block transition-transform group-hover:translate-x-5 motion-reduce:transform-none">
@@ -25,7 +25,7 @@ export default function Home() {
                         Sign in or create an account to access your GradePath dashboard and save your pathway.
                     </p>
                 </a>
-                <a href={`/user/${userId}`} className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30">
+                <a href={`/user/main`} className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30">
                     <h2 className="mb-3 text-2xl font-semibold">
                         Guest {' '}
                         <span className="inline-block transition-transform group-hover:translate-x-5 motion-reduce:transform-none">

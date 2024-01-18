@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import PocketBase from "pocketbase";
 import { useRouter } from "next/navigation";
 
 export default function Register() {
@@ -15,10 +14,10 @@ export default function Register() {
     const [email, setEmail] = useState("");
     const [emailCorrect, setEmailCorrect] = useState(false);
     const [password, setPassword] = useState("");
-    const [confirm, setConfirm] = useState("");
+    const [passwordConfirm, setPasswordConfirm] = useState("");
+    const [error, setError] = useState("");
     const [termsState, setTermsState] = useState(false);
 
-    const pbClient = new PocketBase("http://localhost:8090");
     const router = useRouter();
 
     // Email validation function
@@ -36,41 +35,40 @@ export default function Register() {
     const handelSubmit = async (e) => {
         e.preventDefault();
 
-        var response;
+        try {
+            const form = {
+                userFName,
+                userLName,
+                userDoB,
+                userAddressLine1,
+                userAddressLine2,
+                userCity,
+                userPostcode,
+                email,
+                password,
+                passwordConfirm,
+            };
 
-        if (termsState) {
-            // If the user has accepted the terms and conditions
-            try {
-                response = await pbClient.collection("users").create({
-                    email: email,
-                    emailVisibility: true,
-                    password: password,
-                    passwordConfirm: confirm,
-                    userFName: userFName,
-                    userLName: userLName,
-                    userDoB: userDoB,
-                    userAddressLine1: userAddressLine1,
-                    userAddressLine2: userAddressLine2,
-                    userCity: userCity,
-                    userPostcode: userPostcode,
-                });
-            } catch (error) {
-                alert(error);
-                setUserFName("");
-                setUserLName("");
-                setUserDoB("");
-                setUserAddressLine1("");
-                setUserAddressLine2("");
-                setUserCity("");
-                setUserPostcode("");
-                setEmail("");
-                setPassword("");
-                setConfirm("");
-                console.log(error);
+            const response = await fetch("/api/auth/register", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (!response.ok) {
+                setError("Failed to authenticate user");
                 return;
             }
 
-            router.push(`/user/${response.id}`);
+            const data = await response.json();
+
+            if (data) {
+                router.push("/auth/login");
+            } else {
+                setError("Failed to authenticate user");
+            }
+        } catch (err) {
+            setError("Failed to authenticate user");
         }
     };
 
@@ -155,8 +153,8 @@ export default function Register() {
                 type="password"
                 className="w-80 h-10 rounded-xl text-black p-2"
                 placeholder="Confirm Password"
-                value={confirm}
-                onChange={(e) => setConfirm(e.target.value)}
+                value={passwordConfirm}
+                onChange={(e) => setPasswordConfirm(e.target.value)}
             />
 
             <button
@@ -172,7 +170,7 @@ export default function Register() {
                 Already have an account?
             </h6>
             <a
-                href="/login"
+                href="/auth/login"
                 className="group flex items-center justify-center w-80 h-10 bg-gradient-to-r from-green-400 to-blue-500 text-black dark:text-white font-bold rounded-xl"
             >
                 Login to your GradePath account{" "}
