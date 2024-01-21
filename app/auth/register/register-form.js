@@ -2,6 +2,15 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import FirstNameInput from "@/app/(components)/first-name-input";
+import LastNameInput from "@/app/(components)/last-name-input";
+import DoBInput from "@/app/(components)/dob-input";
+import AddressLineOneInput from "@/app/(components)/address-line-one-input";
+import AddressLineTwoInput from "@/app/(components)/address-line-two-input";
+import CityInput from "@/app/(components)/city-input";
+import PostcodeInput from "@/app/(components)/postcode-input";
+import EmailInput from "@/app/(components)/email-input";
+import PasswordInput from "@/app/(components)/password-input";
 
 export default function Register() {
     const [userFName, setUserFName] = useState("");
@@ -12,7 +21,6 @@ export default function Register() {
     const [userCity, setUserCity] = useState("");
     const [userPostcode, setUserPostcode] = useState("");
     const [email, setEmail] = useState("");
-    const [emailCorrect, setEmailCorrect] = useState(false);
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [error, setError] = useState("");
@@ -77,84 +85,45 @@ export default function Register() {
             className="flex flex-col items-center justify-center space-y-5"
             onSubmit={handelSubmit}
         >
-            <input
-                type="text"
+            <FirstNameInput
+                onFirstNameChange={(value) => setUserFName(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="First Name"
-                value={userFName}
-                onChange={(e) => setUserFName(e.target.value)}
             />
-            <input
-                type="text"
+            <LastNameInput
+                onLastNameChange={(value) => setUserLName(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Last Name"
-                value={userLName}
-                onChange={(e) => setUserLName(e.target.value)}
             />
-            <input
-                type="data"
+            <DoBInput
+                onDoBChange={(value) => setUserDoB(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Date of Birth"
-                value={userDoB}
-                onChange={(e) => setUserDoB(e.target.value)}
             />
-            <input
-                type="text"
+            <AddressLineOneInput
+                onAddressLineOneChange={(value) => setUserAddressLine1(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Address Line 1"
-                value={userAddressLine1}
-                onChange={(e) => setUserAddressLine1(e.target.value)}
             />
-            <input
-                type="text"
+            <AddressLineTwoInput
+                onAddressLineTwoChange={(value) => setUserAddressLine2(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Address Line 2"
-                value={userAddressLine2}
-                onChange={(e) => setUserAddressLine2(e.target.value)}
             />
-            <input
-                type="text"
+            <CityInput
+                onCityChange={(value) => setUserCity(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="City"
-                value={userCity}
-                onChange={(e) => setUserCity(e.target.value)}
             />
-            <input
-                type="text"
+            <PostcodeInput
+                onPostcodeChange={(value) => setUserPostcode(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Postcode"
-                value={userPostcode}
-                onChange={(e) => setUserPostcode(e.target.value)}
             />
-            <input
-                type="email"
-                className={`w-80 h-10 rounded-xl text-black p-2 border-2 ${
-                    emailCorrect ? "border-green-400" : "border-red-400"
-                }`} // If the email is correct, set the border colour to green, else set it to red
-                placeholder="Email"
-                value={email}
-                onChange={(e) => {
-                    // When the user types in the email input, this function is called
-                    setEmail(e.target.value); // Set the email state to the value of the email input
-                    validateEmail(e.target.value); // Call the validateEmail function with the value of the email input
-                }}
-            />
-            <p className="text-gray-400 text-xs text-center">
-                {emailCorrect ? "Email is correct" : "Email is incorrect"}
-            </p>
-            <input
-                type="password"
+            <EmailInput
+                onEmailChange={(value) => setEmail(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
             />
-            <input
-                type="password"
+            <PasswordInput
+                onPasswordChange={(value) => setPassword(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Confirm Password"
-                value={passwordConfirm}
-                onChange={(e) => setPasswordConfirm(e.target.value)}
+            />
+            <PasswordInput
+                onPasswordChange={(value) => setPasswordConfirm(value)}
+                className="w-80 h-10 rounded-xl text-black p-2"
             />
 
             <button

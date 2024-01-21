@@ -1,8 +1,6 @@
-import Image from 'next/image';
-import db from '../../../(db)/index';
-import { cookies } from 'next/headers';
-import { metadata } from '../../../layout';
-
+import Image from "next/image";
+import db from "../../../(db)/index";
+import { cookies } from "next/headers";
 
 // Access Point : http://localhost:3000/user/guest/account
 
@@ -13,31 +11,40 @@ async function getUserData() {
 }
 
 export default async function Page() {
-
     const user = await getUserData();
 
     return (
         <div>
             {/* Navigation Bar */}
-            <nav className="bg-gradient-to-r from-black-400 to-black-500 p-4 grid grid-cols-3">
+            <nav className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] p-3 grid grid-cols-3">
                 {/* Left Navbar buttons */}
                 <div className="flex items-center">
-                    <h1 className="text-white font-bold py-2 px-4 rounded bg-blue-500">Hello, {user.userFName + " " + user.userLName}!</h1>
+                    <h1 className="text-white font-bold py-2 px-4 rounded bg-blue-500">
+                        Hello, {user?.userFName}!
+                    </h1>
                 </div>
 
                 {/* Centered Logo */}
                 <div className="flex items-center justify-center col-span-1">
                     <a href="/">
                         {/* Centered Image */}
-                        <Image src={metadata.icon} alt="GradePath Logo" width={50} height={80} />
+                        <Image
+                            src="/GradePathLogo.svg"
+                            alt="GradePath Logo"
+                            width={50}
+                            height={50}
+                        />
                     </a>
                 </div>
 
                 {/* Right Navbar button */}
                 <div className="flex items-center justify-end">
-                    <button className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600">
-                        Settings
-                    </button>
+                    <a
+                        href="/user/main/"
+                        className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600"
+                    >
+                        Account Grades
+                    </a>
                 </div>
             </nav>
 
@@ -58,61 +65,84 @@ export default async function Page() {
                             <div className="mb-6">
                                 <p className="text-lg text-white">Email:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.email}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.email}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
-                                <p className="text-lg text-white">First Name:</p>
+                                <p className="text-lg text-white">
+                                    First Name:
+                                </p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userFName}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userFName}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Last Name:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userLName}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userLName}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
-                                <p className="text-lg text-white">Date of Birth:</p>
+                                <p className="text-lg text-white">
+                                    Date of Birth:
+                                </p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userDoB}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userDoB}
+                                    </p>
                                 </div>
                             </div>
-
                         </div>
 
                         {/* Right Column */}
-                        <div className="mb-6" style={{ paddingRight: '20px' }}>
-                            <div style={{ height: '67px' }}></div>
+                        <div className="mb-6" style={{ paddingRight: "20px" }}>
+                            <div style={{ height: "67px" }}></div>
                             <div className="mb-6">
-                                <p className="text-lg text-white">Address Line 1:</p>
+                                <p className="text-lg text-white">
+                                    Address Line 1:
+                                </p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userAddressLine1}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userAddressLine1}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
-                                <p className="text-lg text-white">Address Line 2:</p>
+                                <p className="text-lg text-white">
+                                    Address Line 2:
+                                </p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userAddressLine2}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userAddressLine2}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">City:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userCity}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userCity}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Postcode:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.userPostcode}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.userPostcode}
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +162,8 @@ export default async function Page() {
                     <div
                         className="absolute inset-0 border-4"
                         style={{
-                            borderImage: 'linear-gradient(to right, #68D391, #4299E1) 1',
+                            borderImage:
+                                "linear-gradient(to right, #68D391, #4299E1) 1",
                             borderImageSlice: 1,
                         }}
                     ></div>
@@ -148,23 +179,31 @@ export default async function Page() {
                             </h2>
 
                             <div className="mb-6">
-                                <p className="text-lg text-white">Verification Status:</p>
+                                <p className="text-lg text-white">
+                                    Verification Status:
+                                </p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">{user.verified ? 'Verified' : 'Not Verified'}</p>
+                                    <p className="text-xl text-white font-bold">
+                                        {user.verified
+                                            ? "Verified"
+                                            : "Not Verified"}
+                                    </p>
                                 </div>
                             </div>
 
                             <div className="mb-6">
                                 <p className="text-lg text-white">Password:</p>
                                 <div className="rounded-lg bg-gray-800 p-4">
-                                    <p className="text-xl text-white font-bold">********</p>
+                                    <p className="text-xl text-white font-bold">
+                                        *************
+                                    </p>
                                 </div>
                             </div>
                         </div>
 
                         {/* Right Column */}
                         <div className="mb-6">
-                            <div style={{ height: '103px' }}></div>
+                            <div style={{ height: "103px" }}></div>
                             <button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-8 rounded mb-20">
                                 Request Verification Email
                             </button>
@@ -178,7 +217,8 @@ export default async function Page() {
                     <div
                         className="absolute inset-0 border-4"
                         style={{
-                            borderImage: 'linear-gradient(to right, #68D391, #4299E1) 1',
+                            borderImage:
+                                "linear-gradient(to right, #68D391, #4299E1) 1",
                             borderImageSlice: 1,
                         }}
                     ></div>
@@ -206,7 +246,8 @@ export default async function Page() {
                     <div
                         className="absolute inset-0 border-4"
                         style={{
-                            borderImage: 'linear-gradient(to right, #FF0000, #FF0000) 1',
+                            borderImage:
+                                "linear-gradient(to right, #FF0000, #FF0000) 1",
                             borderImageSlice: 1,
                         }}
                     ></div>

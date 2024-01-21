@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import EmailInput from "@/app/(components)/email-input";
+import PasswordInput from "@/app/(components)/password-input";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -44,20 +46,15 @@ export default function Login() {
             className="flex flex-col items-center justify-center space-y-5"
             onSubmit={handelSubmit}
         >
-            <input
-                type="email"
+            <EmailInput
+                onEmailChange={(value) => setEmail(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
             />
-            <input
-                type="password"
+            <PasswordInput
+                onPasswordChange={(value) => setPassword(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
             />
+
             <button
                 type="submit"
                 className="group w-80 h-10 bg-gradient-to-r from-green-400 to-blue-500 text-black dark:text-white font-bold rounded-xl"
