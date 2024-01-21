@@ -11,6 +11,7 @@ import CityInput from "@/app/(components)/city-input";
 import PostcodeInput from "@/app/(components)/postcode-input";
 import EmailInput from "@/app/(components)/email-input";
 import PasswordInput from "@/app/(components)/password-input";
+import ConfirmPasswordInput from "@/app/(components)/confirm-password-input";
 
 export default function Register() {
     const [userFName, setUserFName] = useState("");
@@ -27,18 +28,6 @@ export default function Register() {
     const [termsState, setTermsState] = useState(false);
 
     const router = useRouter();
-
-    // Email validation function
-    // This function is called every time the user types in the email input
-    // It checks if the email is valid and sets the emailCorrect state to true or false
-    // This is used to change the border colour of the email input
-    const validateEmail = (email) => {
-        // Regex for email validation
-        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
-        // Set the emailCorrect state to true or false depending on if the email is valid
-        setEmailCorrect(emailRegex.test(email));
-    };
 
     const handelSubmit = async (e) => {
         e.preventDefault();
@@ -121,9 +110,10 @@ export default function Register() {
                 onPasswordChange={(value) => setPassword(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
             />
-            <PasswordInput
-                onPasswordChange={(value) => setPasswordConfirm(value)}
+            <ConfirmPasswordInput
+                onConfirmPasswordChange={(value) => setPasswordConfirm(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                otherPassword={password}
             />
 
             <button
