@@ -33,14 +33,14 @@ export default function AccountInfomationForm({ userData }) {
     };
 
     const handleSubmit = async (e) => {
-        
+
     };
 
     return (
         <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8">
             <form className="relative max-w-4xl min-w-4xl h-1/2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
-                <div className="p-8 text-white grid lg:grid-cols-2 gap-6">
-                    <h1 className="text-3xl font-bold mb-4 mt-4 col-span-2">
+                <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">
                         Account Information
                     </h1>
 
