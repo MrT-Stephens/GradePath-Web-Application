@@ -5,6 +5,7 @@ import { useState } from "react";
 export default function AddressLineTwoInput({
     onAddressLineTwoChange,
     className,
+    enabled = true,
 }) {
     const [userAddressLine2, setUserAddressLine2] = useState("");
     const [userAddressLineTwoCorrect, setUserAddressLineTwoCorrect] =
@@ -31,6 +32,7 @@ export default function AddressLineTwoInput({
             value={userAddressLine2}
             onChange={handleChange}
             placeholder="Address Line 2"
+            disabled={!enabled}
         />
     );
 }

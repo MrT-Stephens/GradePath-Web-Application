@@ -6,6 +6,7 @@ export default function ConfirmPasswordInput({
     onConfirmPasswordChange,
     className,
     otherPassword,
+    enabled = true,
 }) {
     const [userConfirmPassword, setUserConfirmPassword] = useState("");
     const [userConfirmPasswordCorrect, setUserConfirmPasswordCorrect] =
@@ -41,6 +42,7 @@ export default function ConfirmPasswordInput({
             value={userConfirmPassword}
             onChange={handleChange}
             placeholder="Confirm Password"
+            disabled={!enabled}
         />
     );
 }

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { metadata } from '../../layout'
-import LoginForm from './login-form'
+import LoginForm from '@/app/(components)/login-form'
 
 export default function Page() {
     return (

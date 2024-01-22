@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function DoBInput({ onDoBChange, className }) {
+export default function DoBInput({ onDoBChange, className, enabled = true }) {
     const [userDoB, setUserDoB] = useState("");
     const [userDoBCorrect, setUserDoBCorrect] = useState(false);
 
@@ -25,6 +25,7 @@ export default function DoBInput({ onDoBChange, className }) {
             value={userDoB}
             onChange={handleChange}
             placeholder="Date of Birth"
+            disabled={!enabled}
         />
     );
 }

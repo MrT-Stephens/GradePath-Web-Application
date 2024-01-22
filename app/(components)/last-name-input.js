@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function LastNameInput({ onLastNameChange, className }) {
+export default function LastNameInput({ onLastNameChange, className, enabled = true }) {
     const [userLName, setUserLName] = useState("");
     const [userLNameCorrect, setUserLNameCorrect] = useState(false);
 
@@ -25,6 +25,7 @@ export default function LastNameInput({ onLastNameChange, className }) {
             value={userLName}
             onChange={handleChange}
             placeholder="Last Name"
+            disabled={!enabled}
         />
     );
 }

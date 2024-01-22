@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function PostcodeInput({ onPostcodeChange, className }) {
+export default function PostcodeInput({ onPostcodeChange, className, enabled = true }) {
     const [userPostcode, setUserPostcode] = useState("");
     const [userPostcodeCorrect, setUserPostcodeCorrect] = useState(false);
 
@@ -25,6 +25,7 @@ export default function PostcodeInput({ onPostcodeChange, className }) {
             value={userPostcode}
             onChange={handleChange}
             placeholder="Postcode"
+            disabled={!enabled}
         />
     );
 }

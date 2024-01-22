@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import { metadata } from '../../layout'
-import RegisterForm from './register-form'
+import RegisterForm from '@/app/(components)/register-form'
 
 export default function Page() {
     return (

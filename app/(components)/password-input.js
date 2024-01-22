@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function PasswordInput({ onPasswordChange, className }) {
+export default function PasswordInput({ onPasswordChange, className, enabled = true }) {
     const [userPassword, setUserPassword] = useState("");
     const [userPasswordCorrect, setUserPasswordCorrect] = useState(false);
 
@@ -26,6 +26,7 @@ export default function PasswordInput({ onPasswordChange, className }) {
             value={userPassword}
             onChange={handleChange}
             placeholder="Password"
+            disabled={!enabled}
         />
     );
 }

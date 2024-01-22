@@ -55,10 +55,10 @@ export default async function Page() {
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
                 {/* Account Information Panel */}
                 <div className="relative w-5/12 h-1/2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-md overflow-hidden mb-8">
-                    <div className="p-8 text-white grid grid-cols-2 gap-8">
+                    <div className="p-8 text-white">
                         {/* Left Column */}
-                        <div className="mb-6">
-                            <h2 className="text-3xl font-bold mb-4 mt-4">
+                        <div className="mb-6 grid grid-cols-2 gap-8">
+                            <h2 className="text-3xl font-bold mb-4 mt-4 col-span-2">
                                 Account Information
                             </h2>
 

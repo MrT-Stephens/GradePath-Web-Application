@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function EmailInput({ onEmailChange, className }) {
+export default function EmailInput({ onEmailChange, className, enabled = true }) {
     const [userEmail, setUserEmail] = useState("");
     const [userEmailCorrect, setUserEmailCorrect] = useState(false);
 
@@ -25,6 +25,7 @@ export default function EmailInput({ onEmailChange, className }) {
             value={userEmail}
             onChange={handleChange}
             placeholder="Email"
+            disabled={!enabled}
         />
     );
 }

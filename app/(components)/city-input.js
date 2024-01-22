@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function CityInput({ onCityChange, className }) {
+export default function CityInput({ onCityChange, className, enabled = true }) {
     const [userCity, setUserCity] = useState("");
     const [userCityCorrect, setUserCityCorrect] = useState(false);
 
@@ -25,6 +25,7 @@ export default function CityInput({ onCityChange, className }) {
             value={userCity}
             onChange={handleChange}
             placeholder="City"
+            disabled={!enabled}
         />
     );
 }
