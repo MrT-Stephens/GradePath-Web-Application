@@ -43,6 +43,7 @@ export class DatabaseClient {
     // isAuthenticated takes cookieStore from the request to check for the required tokens in the cookie
     async isAuthenticated(cookieStore) {
         const cookie = cookieStore.get('pb_auth_GradePath');
+
         if (!cookie) {
             return false;
         }
