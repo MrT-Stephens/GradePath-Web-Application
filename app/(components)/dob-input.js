@@ -1,18 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function DoBInput({ onDoBChange, className, enabled = true }) {
+export default function DoBInput({ onDoBChange, className, enabled = true, value }) {
     const [userDoB, setUserDoB] = useState("");
     const [userDoBCorrect, setUserDoBCorrect] = useState(false);
+
+    const validate = (value) => {
+        let DoBRegex = /^\d{4}-\d{2}-\d{2}$/;
+        setUserDoBCorrect(DoBRegex.test(value));
+    };
 
     const handleChange = (e) => {
         setUserDoB(e.target.value);
         onDoBChange(e.target.value);
-
-        let DoBRegex = /^\d{4}-\d{2}-\d{2}$/;
-        setUserDoBCorrect(DoBRegex.test(e.target.value));
+        validate(e.target.value);
     };
+
+    useEffect(() => {
+        setUserDoB(value);
+        validate(value);
+    }, [value]);
 
     return (
         <input

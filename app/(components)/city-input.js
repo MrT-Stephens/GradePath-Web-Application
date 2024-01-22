@@ -1,18 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function CityInput({ onCityChange, className, enabled = true }) {
+export default function CityInput({ onCityChange, className, enabled = true, value }) {
     const [userCity, setUserCity] = useState("");
     const [userCityCorrect, setUserCityCorrect] = useState(false);
+
+    const validate = (value) => {
+        let cityRegex = /^[a-zA-Z]{2,20}$/;
+        setUserCityCorrect(cityRegex.test(value));
+    };
 
     const handleChange = (e) => {
         setUserCity(e.target.value);
         onCityChange(e.target.value);
-
-        let cityRegex = /^[a-zA-Z]{2,20}$/;
-        setUserCityCorrect(cityRegex.test(e.target.value));
+        validate(e.target.value);
     };
+
+    useEffect(() => {
+        setUserCity(value);
+        validate(value);
+    }, [value]);
 
     return (
         <input

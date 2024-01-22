@@ -1,19 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function PasswordInput({ onPasswordChange, className, enabled = true }) {
+export default function PasswordInput({ onPasswordChange, className, enabled = true, value }) {
     const [userPassword, setUserPassword] = useState("");
     const [userPasswordCorrect, setUserPasswordCorrect] = useState(false);
+
+    const validate = (value) => {
+        let passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+        setUserPasswordCorrect(passwordRegex.test(value));
+    };
 
     const handleChange = (e) => {
         setUserPassword(e.target.value);
         onPasswordChange(e.target.value);
-
-        let passwordRegex =
-            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        setUserPasswordCorrect(passwordRegex.test(e.target.value));
+        validate(e.target.value);
     };
+
+    useEffect(() => {
+        setUserPassword(value);
+        validate(value);
+    }, [value]);
 
     return (
         <input

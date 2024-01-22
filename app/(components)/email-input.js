@@ -1,19 +1,27 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export default function EmailInput({ onEmailChange, className, enabled = true }) {
+export default function EmailInput({ onEmailChange, className, enabled = true, value }) {
     const [userEmail, setUserEmail] = useState("");
     const [userEmailCorrect, setUserEmailCorrect] = useState(false);
+
+    const validate = (value) => {
+        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        setUserEmailCorrect(emailRegex.test(value));
+    };
 
     const handleChange = (e) => {
         setUserEmail(e.target.value);
         onEmailChange(e.target.value);
-
-        let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        setUserEmailCorrect(emailRegex.test(e.target.value));
+        validate(e.target.value);
     };
 
+    useEffect(() => {
+        setUserEmail(value);
+        validate(value);
+    }, [value]);
+    
     return (
         <input
             type="email"

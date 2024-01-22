@@ -7,6 +7,7 @@ export default function ConfirmPasswordInput({
     className,
     otherPassword,
     enabled = true,
+    value
 }) {
     const [userConfirmPassword, setUserConfirmPassword] = useState("");
     const [userConfirmPasswordCorrect, setUserConfirmPasswordCorrect] =
@@ -28,6 +29,10 @@ export default function ConfirmPasswordInput({
     const handleChange = (e) => {
         setUserConfirmPassword(e.target.value);
     };
+
+    useEffect(() => {
+        setUserConfirmPassword(value);
+    }, [value]);
 
     return (
         <input
