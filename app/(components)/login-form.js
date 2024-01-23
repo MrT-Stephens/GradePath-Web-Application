@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import EmailInput from "@/app/(components)/email-input";
-import PasswordInput from "@/app/(components)/password-input";
+import EmailInput from "@/app/(components)/inputs/email-input";
+import PasswordInput from "@/app/(components)/inputs/password-input";
 import ErrorMessageBox from "@/app/(components)/error-message-box";
 
 export default function Login() {

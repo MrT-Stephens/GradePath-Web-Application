@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import PasswordInput from "@/app/(components)/password-input";
 
 export default function AccountSecurityForm({ verified }) {
     const [userVerified, setUserVerified] = useState(verified || false);

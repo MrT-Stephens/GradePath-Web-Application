@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import PasswordInput from "@/app/(components)/password-input";
+import PasswordInput from "@/app/(components)/inputs/password-input";
 
 export default function DeleteAccountForm() {
     const [password, setPassword] = useState("");

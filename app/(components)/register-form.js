@@ -2,16 +2,17 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import FirstNameInput from "@/app/(components)/first-name-input";
-import LastNameInput from "@/app/(components)/last-name-input";
-import DoBInput from "@/app/(components)/dob-input";
-import AddressLineOneInput from "@/app/(components)/address-line-one-input";
-import AddressLineTwoInput from "@/app/(components)/address-line-two-input";
-import CityInput from "@/app/(components)/city-input";
-import PostcodeInput from "@/app/(components)/postcode-input";
-import EmailInput from "@/app/(components)/email-input";
-import PasswordInput from "@/app/(components)/password-input";
-import ConfirmPasswordInput from "@/app/(components)/confirm-password-input";
+import FirstNameInput from "@/app/(components)/inputs/first-name-input";
+import LastNameInput from "@/app/(components)/inputs/last-name-input";
+import DoBInput from "@/app/(components)/inputs/dob-input";
+import AddressLineOneInput from "@/app/(components)/inputs/address-line-one-input";
+import AddressLineTwoInput from "@/app/(components)/inputs/address-line-two-input";
+import CityInput from "@/app/(components)/inputs/city-input";
+import PostcodeInput from "@/app/(components)/inputs/postcode-input";
+import EmailInput from "@/app/(components)/inputs/email-input";
+import PasswordInput from "@/app/(components)/inputs/password-input";
+import ConfirmPasswordInput from "@/app/(components)/inputs/confirm-password-input";
+import ErrorMessageBox from "@/app/(components)/error-message-box";
 
 export default function Register() {
     const [userFName, setUserFName] = useState("");
@@ -25,6 +26,7 @@ export default function Register() {
     const [password, setPassword] = useState("");
     const [passwordConfirm, setPasswordConfirm] = useState("");
     const [error, setError] = useState("");
+    const [showError, setShowError] = useState(false);
     const [termsState, setTermsState] = useState(false);
 
     const router = useRouter();
@@ -53,7 +55,7 @@ export default function Register() {
             });
 
             if (!response.ok) {
-                setError("Failed to authenticate user");
+                setError("Failed to create user");
                 return;
             }
 
@@ -61,12 +63,15 @@ export default function Register() {
 
             if (data) {
                 router.push("/auth/login");
+                return;
             } else {
-                setError("Failed to authenticate user");
+                setError("Failed to create user");
             }
         } catch (err) {
-            setError("Failed to authenticate user");
+            setError("Failed to create user");
         }
+
+        setShowError(true);
     };
 
     return (
@@ -74,6 +79,15 @@ export default function Register() {
             className="flex flex-col items-center justify-center space-y-5"
             onSubmit={handelSubmit}
         >
+            {showError ? (
+                <ErrorMessageBox
+                    message={error}
+                    onClose={() => setShowError(false)}
+                />
+            ) : (
+                <></>
+            )}
+
             <FirstNameInput
                 onFirstNameChange={(value) => setUserFName(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"

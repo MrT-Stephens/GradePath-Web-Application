@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import FirstNameInput from "./first-name-input";
-import LastNameInput from "./last-name-input";
-import DoBInput from "./dob-input";
-import AddressLineOneInput from "./address-line-one-input";
-import AddressLineTwoInput from "./address-line-two-input";
-import CityInput from "./city-input";
-import PostcodeInput from "./postcode-input";
-import EmailInput from "./email-input";
+import FirstNameInput from "./inputs/first-name-input";
+import LastNameInput from "./inputs/last-name-input";
+import DoBInput from "./inputs/dob-input";
+import AddressLineOneInput from "./inputs/address-line-one-input";
+import AddressLineTwoInput from "./inputs/address-line-two-input";
+import CityInput from "./inputs/city-input";
+import PostcodeInput from "./inputs/postcode-input";
+import EmailInput from "./inputs/email-input";
 
 export default function AccountInfomationForm({ userData }) {
     const [userFName, setUserFName] = useState(userData?.userFName || "");
