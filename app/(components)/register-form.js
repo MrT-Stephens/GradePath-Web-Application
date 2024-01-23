@@ -77,43 +77,53 @@ export default function Register() {
             <FirstNameInput
                 onFirstNameChange={(value) => setUserFName(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userFName}
             />
             <LastNameInput
                 onLastNameChange={(value) => setUserLName(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userLName}
             />
             <DoBInput
                 onDoBChange={(value) => setUserDoB(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userDoB}
             />
             <AddressLineOneInput
                 onAddressLineOneChange={(value) => setUserAddressLine1(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userAddressLine1}
             />
             <AddressLineTwoInput
                 onAddressLineTwoChange={(value) => setUserAddressLine2(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userAddressLine2}
             />
             <CityInput
                 onCityChange={(value) => setUserCity(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userCity}
             />
             <PostcodeInput
                 onPostcodeChange={(value) => setUserPostcode(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={userPostcode}
             />
             <EmailInput
                 onEmailChange={(value) => setEmail(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={email}
             />
             <PasswordInput
                 onPasswordChange={(value) => setPassword(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
+                value={password}
             />
             <ConfirmPasswordInput
                 onConfirmPasswordChange={(value) => setPasswordConfirm(value)}
                 className="w-80 h-10 rounded-xl text-black p-2"
                 otherPassword={password}
+                value={passwordConfirm}
             />
 
             <button

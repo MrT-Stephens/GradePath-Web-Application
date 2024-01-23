@@ -63,10 +63,12 @@ export default function Login() {
                 <EmailInput
                     onEmailChange={(value) => setEmail(value)}
                     className="w-80 h-10 rounded-xl text-black p-2"
+                    value={email}
                 />
                 <PasswordInput
                     onPasswordChange={(value) => setPassword(value)}
                     className="w-80 h-10 rounded-xl text-black p-2"
+                    value={password}
                 />
 
                 <button
