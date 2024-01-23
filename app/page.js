@@ -32,23 +32,23 @@ export default function Home() {
                             </span>
                         </h2>
                         <p className="m-0 max-w-[30ch] text-sm opacity-50 mx-auto">
-                            Sign in or create an account to access your GradePath
+                            Sign in to access your GradePath
                             dashboard and save your pathway.
                         </p>
                     </a>
                     <a
-                        href="/user/main"
+                        href="/auth/register"
                         className="group rounded-xl border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
                     >
                         <h2 className="mb-3 text-2xl font-semibold">
-                            Guest{" "}
+                            Create an account{" "}
                             <span className="inline-block transition-transform group-hover:translate-x-5 motion-reduce:transform-none">
                                 -&gt;
                             </span>
                         </h2>
                         <p className="m-0 max-w-[30ch] text-sm opacity-50 mx-auto">
-                            Continue as a guest your data will not be saved. Only
-                            used to generate your pathway.
+                            Create an account to access your GradePath
+                            dashboard and save your pathway.
                         </p>
                     </a>
                 </div>
