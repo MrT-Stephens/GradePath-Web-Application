@@ -65,6 +65,14 @@ export class DatabaseClient {
 
         return this.client.authStore.model;
     }
+
+    // logout clears the cookie
+    logout(cookieStore) {
+        cookieStore.set('pb_auth_GradePath', null);
+
+        // We also clear the authStore
+        this.client.authStore.clear();
+    }
 }
 
 // We create an instance of the DatabaseClient that can be used throughout the app.

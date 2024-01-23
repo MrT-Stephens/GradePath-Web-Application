@@ -37,11 +37,17 @@ export default async function Page() {
                 {/* Right Navbar button */}
                 <div className="flex items-center justify-end">
                     <a
-                        href="/user/main/account"
-                        className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:bg-green-600"
+                        href="/user/main/account/"
+                        className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:opacity-75"
                     >
                         Account Settings
                     </a>
+
+                    <button
+                        className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:opacity-75"
+                    >
+                        Logout
+                    </button>
                 </div>
             </nav>
 
