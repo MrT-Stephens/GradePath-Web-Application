@@ -1,6 +1,7 @@
 import Image from "next/image";
 import db from "../../(db)/index";
 import { cookies } from "next/headers";
+import EnterGradesForm from "@/app/(components)/enter-grades-form";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
@@ -55,7 +56,11 @@ export default async function Page() {
             <div className="h-1 bg-gradient-to-r from-green-500 to-blue-600"></div>
 
             {/* Main Content */}
-            <main className="flex flex-col min-h-screen items-center justify-center p-10"></main>
+            <main className="flex flex-col min-h-screen items-center justify-center p-10">
+
+                <EnterGradesForm />
+                
+            </main>
         </div>
     );
 }
