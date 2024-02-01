@@ -1,0 +1,98 @@
+//https://www.gov.uk/what-different-qualification-levels-mean/list-of-qualification-levels
+
+const LevelOfStudy = [
+    {
+        level: "Level 1",
+        levels: [
+            "first certificate",
+            "GCSE - grades 3, 2, 1 or grades D, E, F, G",
+            "level 1 award",
+            "level 1 certificate",
+            "level 1 ESOL",
+            "level 1 essential skills",
+            "level 1 functional skills",
+            "level 1 national vocational qualification (NVQ)",
+            "music grades 1, 2 and 3",
+        ],
+    },
+    {
+        level: "Level 2",
+        levels: [
+            "CSE - grade 1",
+            "GCSE - grades 9, 8, 7, 6, 5, 4 or grades A*, A, B, C",
+            "intermediate apprenticeship",
+            "level 2 award",
+            "level 2 certificate",
+            "level 2 diploma",
+            "level 2 ESOL",
+            "level 2 essential skills",
+            "level 2 functional skills",
+            "level 2 national certificate",
+            "level 2 national diploma",
+            "level 2 NVQ",
+            "music grades 4 and 5",
+            "O level - grade A, B or C",
+        ],
+    },
+    {
+        level: "Level 3",
+        levels: [
+            "A level",
+            "access to higher education diploma",
+            "advanced apprenticeship",
+            "applied general",
+            "AS level",
+            "international Baccalaureate diploma",
+            "level 3 award",
+            "level 3 certificate",
+            "level 3 diploma",
+            "level 3 ESOL",
+            "level 3 national certificate",
+            "level 3 national diploma",
+            "level 3 NVQ",
+            "music grades 6, 7 and 8",
+            "T level",
+            "tech level",
+        ],
+    },
+    {
+        level: "Level 4",
+        levels: [
+            "certificate of higher education (CertHE)",
+            "higher apprenticeship",
+            "higher national certificate (HNC)",
+            "level 4 award",
+            "level 4 certificate",
+            "level 4 diploma",
+            "level 4 NVQ",
+        ],
+    },
+    {
+        level: "Level 5",
+        levels: [
+            "diploma of higher education (DipHE)",
+            "foundation degree",
+            "higher national diploma (HND)",
+            "level 5 award",
+            "level 5 certificate",
+            "level 5 diploma",
+            "level 5 NVQ",
+        ],
+    },
+    {
+        level: "Level 6",
+        levels: [
+            "degree apprenticeship",
+            "degree with honours - for example bachelor of the arts (BA) Hons, bachelor of science (BSc) Hons",
+            "graduate certificate",
+            "graduate diploma",
+            "level 6 award",
+            "level 6 certificate",
+            "level 6 diploma",
+            "level 6 NVQ",
+            "ordinary degree without honours",
+        ],
+    },
+];
+
+export default LevelOfStudy;

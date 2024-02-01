@@ -2,6 +2,8 @@ import Image from "next/image";
 import db from "../../(db)/index";
 import { cookies } from "next/headers";
 import EnterGradesForm from "@/app/(components)/enter-grades-form";
+import LevelOfStudy from "@/app/(data)/level-of-study";
+import GradeType from "@/app/(data)/grade";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
@@ -58,7 +60,7 @@ export default async function Page() {
             {/* Main Content */}
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
 
-                <EnterGradesForm />
+                <EnterGradesForm levelOfStudyData={LevelOfStudy} gradeTypeData={GradeType}/>
                 
             </main>
         </div>
