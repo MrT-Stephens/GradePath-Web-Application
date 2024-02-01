@@ -20,7 +20,7 @@ export default function EnterGradesForm({ userGrades }) {
                     <div
                         className="flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex"
                     >
-                        <h1 className="text-2xl font-bold">Grade Name</h1>
+                        <h1 className="text-2xl font-bold">Course Name</h1>
                         <div className="flex-grow"></div>
                         <button className="flex-none px-4 text-black ring-2 ring-gray-500 rounded-xl font-bold py-2 hover:opacity-75" onClick={handleDropdown}>
                             <svg
@@ -41,10 +41,10 @@ export default function EnterGradesForm({ userGrades }) {
                         </div>
                     </div>
                     <button className="flex-none px-4 bg-green-500 rounded-xl text-white font-bold py-2 hover:opacity-75">
-                        Add Grade
+                        Add Course
                     </button>
                     <button className="flex-none px-4 bg-red-500 rounded-xl text-white font-bold py-2 hover:opacity-75">
-                        Remove Grade
+                        Remove Course
                     </button>
                 </div>
             </form>
