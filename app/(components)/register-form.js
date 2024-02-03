@@ -12,7 +12,7 @@ import PostcodeInput from "@/app/(components)/inputs/postcode-input";
 import EmailInput from "@/app/(components)/inputs/email-input";
 import PasswordInput from "@/app/(components)/inputs/password-input";
 import ConfirmPasswordInput from "@/app/(components)/inputs/confirm-password-input";
-import ErrorMessageBox from "@/app/(components)/error-message-box";
+import MessageBox from "@/app/(components)/message-box";
 
 export default function Register() {
     const [userFName, setUserFName] = useState("");
@@ -56,13 +56,14 @@ export default function Register() {
 
             if (!response.ok) {
                 setError("Failed to create user");
+                setShowError(true);
                 return;
             }
 
             const data = await response.json();
 
             if (data) {
-                router.push("/auth/login");
+                router.push("/");
                 return;
             } else {
                 setError("Failed to create user");
@@ -76,9 +77,10 @@ export default function Register() {
 
     return (
         <div className=" lg:max-w-screen-md">
-
+            
             {showError ? (
-                <ErrorMessageBox
+                <MessageBox
+                    title="Error"
                     message={error}
                     onClose={() => setShowError(false)}
                 />
@@ -147,7 +149,6 @@ export default function Register() {
                     otherPassword={password}
                     value={passwordConfirm}
                 />
-
 
                 <button
                     type="submit"

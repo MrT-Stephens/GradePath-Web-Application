@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import EmailInput from "@/app/(components)/inputs/email-input";
 import PasswordInput from "@/app/(components)/inputs/password-input";
-import ErrorMessageBox from "@/app/(components)/error-message-box";
+import MessageBox from "@/app/(components)/message-box";
 
 export default function Login() {
     const [email, setEmail] = useState("");
@@ -29,6 +29,8 @@ export default function Login() {
 
             if (!response.ok) {
                 setError("Failed to authenticate user");
+                setShowError(true);
+                return;
             }
 
             const data = await response.json();
@@ -49,13 +51,15 @@ export default function Login() {
     return (
         <div>
             {showError ? (
-                <ErrorMessageBox
+                <MessageBox
+                    title="Error"
                     message={error}
                     onClose={() => setShowError(false)}
                 />
             ) : (
                 <></>
             )}
+
             <form
                 className="flex flex-col items-center justify-center space-y-5"
                 onSubmit={handelSubmit}
