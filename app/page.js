@@ -1,28 +1,15 @@
-﻿import Image from "next/image";
-import LoginForm from "./(components)/login-form";
+﻿import LoginForm from "./(components)/login-form";
+import { NavBar, NavBarItem } from "./(components)/navigation-bar";
 
 export default function Home() {
     return (
         <div className="relative">
-            <header className="fixed top-0 w-full backdrop-blur-xl">
-                <nav className="flex items-center justify-between py-3 max-w-6xl mx-auto">
-                    <a href="/" className="flex items-center space-x-4">
-                        <Image
-                            src="/GradePathLogo.svg"
-                            alt="GradePath Logo"
-                            width={40}
-                            height={40}
-                        />
-                        <h1 className="text-2xl font-bold">GradePath</h1>
-                    </a>
-                    <div className="flex items-center space-x-4">
-                        <a href="/" className="text-lg font-bold">
-                            Register
-                        </a>
-                    </div>
-                </nav>
-                <div className="w-full h-px bg-gradient-to-r from-green-400 to-blue-500"></div>
-            </header>
+            <NavBar>
+                <NavBarItem href="/#home" text="Home" />
+                <NavBarItem href="/#about" text="About" />
+                <NavBarItem href="/#contact" text="Contact" />
+                <NavBarItem href="/auth/register" text="Register" />
+            </NavBar>
 
             <main className="flex min-h-screen items-center justify-center px-10 py-32 pb-10 md:px-0 max-w-6xl mx-auto">
                 <div className="w-full flex flex-col md:flex-row space-x-0 space-y-10 md:space-y-0 md:space-x-10">
