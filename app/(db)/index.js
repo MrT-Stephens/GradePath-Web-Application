@@ -2,7 +2,7 @@
 
 import PocketBase from 'pocketbase';
 
-export const POCKET_BASE_URL = "http://127.0.0.1:8090";
+export const POCKET_BASE_URL = "https://gradepath-db.fly.dev/";
 
 export class DatabaseClient {
     // the instance of PocketBase
