@@ -28,8 +28,8 @@ const GradeType = [
     {
         grade: "Grade National Diploma/BTEC",
         grades: [
-            "Disticion*",
-            "Disticion",
+            "Distinction*",
+            "Distinction",
             "Merit",
             "Pass",
             "Fail",

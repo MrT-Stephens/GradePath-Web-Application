@@ -4,6 +4,7 @@ import { cookies } from "next/headers";
 import EnterGradesForm from "@/app/(components)/enter-grades-form";
 import LevelOfStudy from "@/app/(data)/level-of-study";
 import GradeType from "@/app/(data)/grade";
+import FieldsAndCourses from "@/app/(data)/fields-and-courses";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
@@ -60,9 +61,10 @@ export default async function Page() {
             {/* Main Content */}
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
 
-                <EnterGradesForm levelOfStudyData={LevelOfStudy} gradeTypeData={GradeType}/>
-                
+                <EnterGradesForm levelOfStudyData={LevelOfStudy} gradeTypeData={GradeType} fieldsAndCoursesData={FieldsAndCourses} />
+
             </main>
         </div>
     );
 }
+    

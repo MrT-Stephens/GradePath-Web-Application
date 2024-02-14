@@ -6,142 +6,175 @@ export default function EnterGradesForm({
     userGrades,
     levelOfStudyData,
     gradeTypeData,
+    fieldsAndCoursesData,
 }) {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
+    
     const [gradeCourseName, setGradeCourseName] = useState("");
     const [gradeMark, setGradeMark] = useState("");
     const [gradeLevelofStudy, setGradeLevelofStudy] = useState("");
     const [gradeGradeType, setGradeGradeType] = useState("");
+    const [gradeField, setFieldsAndCourses] = useState("");
+
+    const [selectedCourse, setSelectedCourse] = useState("");
+    const [selectedGrade, setSelectedGrade] = useState("");
+    const [selectedLevel, setSelectedLevel] = useState("");
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [selectedEntries, setSelectedEntries] = useState([]);
+
+    const handleCourseChange = (event) => {
+        setSelectedCourse(event.target.value);
+    };
+
+    const handleGradeChange = (event) => {
+        setSelectedGrade(event.target.value);
+    };
+
+    const handleLevelChange = (event) => {
+        setSelectedLevel(event.target.value);
+    };
 
     const handleDropdown = (e) => {
         e.preventDefault();
         setDropdownOpen(!dropdownOpen);
     };
 
+    const handleAddCourse = () => {
+        if (selectedCourse !== "" && selectedGrade !== "" && selectedLevel !== "") {
+            setSelectedEntries([...selectedEntries, { course: selectedCourse, grade: selectedGrade, level: selectedLevel }]);
+            setSelectedCourse(""); // Clear selected course
+            setSelectedGrade(""); // Clear selected grade
+            setSelectedLevel(""); // Clear selected level
+            setDropdownOpen(false); // Close the dropdown
+        }
+    };
+
+    const handleRemoveEntry = (index) => {
+        const updatedEntries = [...selectedEntries];
+        updatedEntries.splice(index, 1);
+        setSelectedEntries(updatedEntries);
+    };
+
     return (
-        <div className="space-y-1 w-1/2 bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8">
-            <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
-                <div className="p-8 text-white flex flex-row gap-6">
-                    <div className="flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex">
-                        <h1 className="text-2xl font-bold">Select</h1>
-                        <div className="flex-grow"></div>
-                        <button
-                            className="flex-none px-4 text-black ring-2 ring-gray-500 rounded-xl font-bold py-2 hover:opacity-75"
-                            onClick={handleDropdown}
+        <div className="space-y-4 w-1/2 border-2 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] p-1 rounded-xl mb-8">
+            <div className="p-8 text-white flex flex-row gap-6 relative">
+                <div className="flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex">
+                    <h1 className="text-2xl font-bold">Select</h1>
+                    <div className="flex-grow"></div>
+                    <button
+                        className="flex-none px-4 text-black ring-2 ring-gray-500 rounded-xl font-bold py-2 hover:opacity-75"
+                        onClick={handleDropdown}
+                    >
+                        <svg
+                            width="16"
+                            height="16"
+                            fill="currentColor"
+                            viewBox="0 0 16 16"
                         >
-                            <svg
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                viewBox="0 0 16 16"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-                                />
-                            </svg>
-                        </button>
-
-                        <div
-                            className={`items-center absolute top-20 right-1/2 z-50 flex flex-col p-4 space-y-8 w-1/2 bg-white ring-4 ring-gradient-to-r from-green-400 to-blue-500 ring-thickness ${
-                                dropdownOpen ? "" : "hidden"
-                            }`}
-                        >
-                            <div class="w-1/2 mt-2 space-y-3">
-                                <label
-                                    for="course2"
-                                    class="block text-lg font-medium leading-6 text-gray-900"
-                                >
-                                    Grade
-                                </label>
-                                <div class="mt-2">
-                                    <select
-                                        id="course-grade"
-                                        name="course-grade"
-                                        autocomplete="course-grade"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
-                                    >
-                                        {gradeTypeData.map((grade, index) => {
-                                            return (
-                                                <optgroup
-                                                    id={index}
-                                                    label={grade.grade}
-                                                >
-                                                    {grade.grades.map(
-                                                        (grade, index) => {
-                                                            return (
-                                                                <option
-                                                                    id={index}
-                                                                >
-                                                                    {grade}
-                                                                </option>
-                                                            );
-                                                        }
-                                                    )}
-                                                </optgroup>
-                                            );
-                                        })}
-                                    </select>
-                                </div>
-
-                                <label
-                                    for="course3"
-                                    class="block text-lg font-medium leading-6 text-gray-900"
-                                >
-                                    Level of Study
-                                </label>
-                                <div class="mt-2">
-                                    <select
-                                        id="level-of-study"
-                                        name="level-of-study"
-                                        autocomplete="level-of-study"
-                                        class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
-                                    >
-                                        {levelOfStudyData.map(
-                                            (level, index) => {
-                                                return (
-                                                    <optgroup
-                                                        id={index}
-                                                        label={level.level}
-                                                    >
-                                                        {level.levels.map(
-                                                            (level, index) => {
-                                                                return (
-                                                                    <option
-                                                                        id={index}
-                                                                    >
-                                                                        {level}
-                                                                    </option>
-                                                                );
-                                                            }
-                                                        )}
-                                                    </optgroup>
-                                                );
-                                            }
-                                        )}
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button className="flex-none px-4 bg-green-500 rounded-xl text-white font-bold py-2 hover:opacity-75">
-                        Add Course
+                            <path
+                                fillRule="evenodd"
+                                d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+                            />
+                        </svg>
                     </button>
-                    <button className="flex-none px-4 bg-red-500 rounded-xl text-white font-bold py-2 hover:opacity-75">
-                        Remove Course
+                </div>
+                <div
+                    className={`absolute top-full right-0 z-50 flex flex-col p-4 space-y-8 w-1/2 bg-white ring-4 ring-gradient-to-r from-green-400 to-blue-500 ring-thickness ${
+                        dropdownOpen ? "" : "hidden"
+                    }`}
+                >
+                    <div className="flex flex-col items-center">
+                        <label htmlFor="course" className="block text-lg font-medium leading-6 text-gray-900">
+                            Course
+                        </label>
+                        <select
+                            id="course"
+                            name="course"
+                            value={selectedCourse}
+                            onChange={handleCourseChange}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                        >
+                            <option value="">Select Course</option>
+                            {fieldsAndCoursesData.map((field, index) => (
+                                <optgroup key={index} label={field.field}>
+                                    {field.courses.map((course, index) => (
+                                        <option key={index} value={course}>{course}</option>
+                                    ))}
+                                </optgroup>
+                            ))}
+                        </select>
+
+                        <label htmlFor="grade" className="block text-lg font-medium leading-6 text-gray-900">
+                            Grade
+                        </label>
+                        <select
+                            id="grade"
+                            name="grade"
+                            value={selectedGrade}
+                            onChange={handleGradeChange}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                        >
+                            <option value="">Select Grade</option>
+                            {gradeTypeData.map((grade, index) => (
+                                <optgroup key={index} label={grade.grade}>
+                                    {grade.grades.map((g, index) => (
+                                        <option key={index} value={g}>{g}</option>
+                                    ))}
+                                </optgroup>
+                            ))}
+                        </select>
+
+                        <label htmlFor="level" className="block text-lg font-medium leading-6 text-gray-900">
+                            Level of Study
+                        </label>
+                        <select
+                            id="level"
+                            name="level"
+                            value={selectedLevel}
+                            onChange={handleLevelChange}
+                            className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                        >
+                            <option value="">Select Level</option>
+                            {levelOfStudyData.map((level, index) => (
+                                <optgroup key={index} label={level.level}>
+                                    {level.levels.map((l, index) => (
+                                        <option key={index} value={l}>{l}</option>
+                                    ))}
+                                </optgroup>
+                            ))}
+                        </select>
+                    </div>
+                    <button
+                        className="bg-green-500 rounded-xl text-white font-bold py-2 px-4 hover:opacity-75 self-center"
+                        onClick={handleAddCourse}
+                    >
+                        Add Course
                     </button>
                 </div>
             </div>
             <div className="p-8 text-white flex flex-row gap-6">
-                <h1 className="text-2xl font-bold">Course's & Grade's</h1>
             </div>
-            <form className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
-                <div className="p-8 text-white flex flex-row gap-6">
-                    <h1 className="text-2xl font-bold">
-                        Awaiting new entry...
-                    </h1>
+            {selectedEntries.length > 0 && (
+                <div className="p-8 text-white">
+                    <h1 className="text-2xl font-bold mb-4">Course's & Grade's</h1>
+                    <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
+                        <div className="p-8 text-white">
+                            {selectedEntries.map((entry, index) => (
+                                <div key={index} className="mb-4 border-2 border-gray-400 rounded-xl p-4">
+                                    <div className="mb-2">{entry.course}</div>
+                                    <div className="mb-2">{entry.grade}</div>
+                                    <div className="mb-4">{entry.level}</div>
+                                    <button
+                                        className="px-4 bg-red-500 rounded-xl text-white font-bold py-2 hover:opacity-75"
+                                        onClick={() => handleRemoveEntry(index)}
+                                    >
+                                        Remove
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
                 </div>
-            </form>
+            )}
         </div>
     );
 }
