@@ -73,6 +73,22 @@ export class DatabaseClient {
         // We also clear the authStore
         this.client.authStore.clear();
     }
+
+    async getUserGrades(cookieStore) {
+        const user = await this.getUser(cookieStore);
+
+        if (!user) {
+            return [];
+        }
+
+        const grades = await this.client.collection('userGrade').getList(1, 100, 
+            { 
+                filter: `userID = "${user.id}"`,
+                sort: '-created'
+            });
+        
+        return grades;
+    }
 }
 
 // We create an instance of the DatabaseClient that can be used throughout the app.

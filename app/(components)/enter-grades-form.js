@@ -8,18 +8,10 @@ export default function EnterGradesForm({
     gradeTypeData,
     fieldsAndCoursesData,
 }) {
-    
-    const [gradeCourseName, setGradeCourseName] = useState("");
-    const [gradeMark, setGradeMark] = useState("");
-    const [gradeLevelofStudy, setGradeLevelofStudy] = useState("");
-    const [gradeGradeType, setGradeGradeType] = useState("");
-    const [gradeField, setFieldsAndCourses] = useState("");
-
     const [selectedCourse, setSelectedCourse] = useState("");
     const [selectedGrade, setSelectedGrade] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
     const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [selectedEntries, setSelectedEntries] = useState([]);
 
     const handleCourseChange = (event) => {
         setSelectedCourse(event.target.value);
@@ -39,8 +31,11 @@ export default function EnterGradesForm({
     };
 
     const handleAddCourse = () => {
-        if (selectedCourse !== "" && selectedGrade !== "" && selectedLevel !== "") {
-            setSelectedEntries([...selectedEntries, { course: selectedCourse, grade: selectedGrade, level: selectedLevel }]);
+        if (
+            selectedCourse !== "" &&
+            selectedGrade !== "" &&
+            selectedLevel !== ""
+        ) {
             setSelectedCourse(""); // Clear selected course
             setSelectedGrade(""); // Clear selected grade
             setSelectedLevel(""); // Clear selected level
@@ -48,10 +43,8 @@ export default function EnterGradesForm({
         }
     };
 
-    const handleRemoveEntry = (index) => {
-        const updatedEntries = [...selectedEntries];
-        updatedEntries.splice(index, 1);
-        setSelectedEntries(updatedEntries);
+    const handleRemoveEntry = (id) => {
+        
     };
 
     return (
@@ -83,7 +76,10 @@ export default function EnterGradesForm({
                     }`}
                 >
                     <div className="flex flex-col items-center">
-                        <label htmlFor="course" className="block text-lg font-medium leading-6 text-gray-900">
+                        <label
+                            htmlFor="course"
+                            className="block text-lg font-medium leading-6 text-gray-900"
+                        >
                             Course
                         </label>
                         <select
@@ -97,13 +93,18 @@ export default function EnterGradesForm({
                             {fieldsAndCoursesData.map((field, index) => (
                                 <optgroup key={index} label={field.field}>
                                     {field.courses.map((course, index) => (
-                                        <option key={index} value={course}>{course}</option>
+                                        <option key={index} value={course}>
+                                            {course}
+                                        </option>
                                     ))}
                                 </optgroup>
                             ))}
                         </select>
 
-                        <label htmlFor="grade" className="block text-lg font-medium leading-6 text-gray-900">
+                        <label
+                            htmlFor="grade"
+                            className="block text-lg font-medium leading-6 text-gray-900"
+                        >
                             Grade
                         </label>
                         <select
@@ -117,13 +118,18 @@ export default function EnterGradesForm({
                             {gradeTypeData.map((grade, index) => (
                                 <optgroup key={index} label={grade.grade}>
                                     {grade.grades.map((g, index) => (
-                                        <option key={index} value={g}>{g}</option>
+                                        <option key={index} value={g}>
+                                            {g}
+                                        </option>
                                     ))}
                                 </optgroup>
                             ))}
                         </select>
 
-                        <label htmlFor="level" className="block text-lg font-medium leading-6 text-gray-900">
+                        <label
+                            htmlFor="level"
+                            className="block text-lg font-medium leading-6 text-gray-900"
+                        >
                             Level of Study
                         </label>
                         <select
@@ -137,7 +143,9 @@ export default function EnterGradesForm({
                             {levelOfStudyData.map((level, index) => (
                                 <optgroup key={index} label={level.level}>
                                     {level.levels.map((l, index) => (
-                                        <option key={index} value={l}>{l}</option>
+                                        <option key={index} value={l}>
+                                            {l}
+                                        </option>
                                     ))}
                                 </optgroup>
                             ))}
@@ -151,21 +159,33 @@ export default function EnterGradesForm({
                     </button>
                 </div>
             </div>
-            <div className="p-8 text-white flex flex-row gap-6">
-            </div>
-            {selectedEntries.length > 0 && (
+            <div className="p-8 text-white flex flex-row gap-6"></div>
+            {userGrades.items.length > 0 && (
                 <div className="p-8 text-white">
-                    <h1 className="text-2xl font-bold mb-4">Course's & Grade's</h1>
+                    <h1 className="text-2xl font-bold mb-4">
+                        Course's & Grade's
+                    </h1>
                     <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
                         <div className="p-8 text-white">
-                            {selectedEntries.map((entry, index) => (
-                                <div key={index} className="mb-4 border-2 border-gray-400 rounded-xl p-4">
-                                    <div className="mb-2">{entry.course}</div>
-                                    <div className="mb-2">{entry.grade}</div>
-                                    <div className="mb-4">{entry.level}</div>
+                            {userGrades.items.map((entry) => (
+                                <div
+                                    key={entry.id}
+                                    className="mb-4 border-2 border-gray-400 rounded-xl p-4"
+                                >
+                                    <div className="mb-2">
+                                        {entry.gradeCourseName}
+                                    </div>
+                                    <div className="mb-2">
+                                        {entry.gradeMark}
+                                    </div>
+                                    <div className="mb-4">
+                                        {entry.gradeLevelofStudy}
+                                    </div>
                                     <button
                                         className="px-4 bg-red-500 rounded-xl text-white font-bold py-2 hover:opacity-75"
-                                        onClick={() => handleRemoveEntry(index)}
+                                        onClick={() =>
+                                            handleRemoveEntry(entry.id)
+                                        }
                                     >
                                         Remove
                                     </button>
