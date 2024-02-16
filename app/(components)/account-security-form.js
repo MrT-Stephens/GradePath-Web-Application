@@ -16,7 +16,7 @@ export default function AccountSecurityForm({ verified }) {
     };
 
     return (
-        <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8 w-1/2">
+        <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8 lg:w-1/2 w-full">
             <form className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
                 <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">

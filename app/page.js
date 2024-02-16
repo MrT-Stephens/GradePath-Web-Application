@@ -4,7 +4,7 @@ import { NavBar, NavBarItem } from "./(components)/navigation-bar";
 export default function Home() {
     return (
         <div className="relative">
-            <NavBar>
+            <NavBar title="GradePath">
                 <NavBarItem href="/#home" text="Home" />
                 <NavBarItem href="/#about" text="About" />
                 <NavBarItem href="/#contact" text="Contact" />
@@ -31,16 +31,14 @@ export default function Home() {
                         >
                             Read more about our application
                             <svg
-                                class="w-3.5 h-3.5 ms-1 -rotate-45"
+                                className="w-3.5 h-3.5 ms-1 -rotate-45"
                                 aria-hidden="true"
                                 fill="none"
                                 viewBox="0 0 14 10"
                             >
                                 <path
                                     stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="2"
+                                    strokeWidth="2"
                                     d="M1 5h12m0 0L9 1m4 4L9 9"
                                 />
                             </svg>

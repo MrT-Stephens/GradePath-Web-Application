@@ -5,6 +5,7 @@ import EnterGradesForm from "@/app/(components)/enter-grades-form";
 import LevelOfStudy from "@/app/(data)/level-of-study";
 import GradeType from "@/app/(data)/grade";
 import FieldsAndCourses from "@/app/(data)/fields-and-courses";
+import { NavBar, NavBarItem } from "@/app/(components)/navigation-bar";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
@@ -23,47 +24,15 @@ export default async function Page() {
     return (
         <div>
             {/* Navigation Bar */}
-            <nav className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] p-3 grid grid-cols-3">
-                {/* Left Navbar buttons */}
-                <div className="flex items-center">
-                    <h1 className="text-white font-bold py-2 px-4 rounded bg-blue-500">
-                        Hello, {userName}!
-                    </h1>
-                </div>
-
-                {/* Centered Logo */}
-                <div className="flex items-center justify-center col-span-1">
-                    <a href="/">
-                        {/* Centered Image */}
-                        <Image
-                            src="/GradePathLogo.svg"
-                            alt="GradePath Logo"
-                            width={50}
-                            height={50}
-                        />
-                    </a>
-                </div>
-
-                {/* Right Navbar button */}
-                <div className="flex items-center justify-end">
-                    <a
-                        href="/user/main/account/"
-                        className="text-white font-bold py-2 px-4 rounded bg-green-500 hover:opacity-75"
-                    >
-                        Account Settings
-                    </a>
-
-                    <button className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:opacity-75">
-                        Logout
-                    </button>
-                </div>
-            </nav>
-
-            {/* Line break between Navbar and Content */}
-            <div className="h-1 bg-gradient-to-r from-green-500 to-blue-600"></div>
+            <NavBar title={`Hello, ${userName}!`}>
+                <NavBarItem href="/#home" text="Home" />
+                <NavBarItem href="/#about" text="About" />
+                <NavBarItem href="/#contact" text="Contact" />
+                <NavBarItem href="/user/main/account" text="Account Settings" />
+            </NavBar>
 
             {/* Main Content */}
-            <main className="flex flex-col min-h-screen items-center justify-center p-10">
+            <main className="flex flex-col min-h-screen items-center justify-center px-10 pb-10 pt-24">
                 <EnterGradesForm
                     levelOfStudyData={LevelOfStudy}
                     gradeTypeData={GradeType}
