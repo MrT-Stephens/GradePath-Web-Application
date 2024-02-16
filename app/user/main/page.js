@@ -2,14 +2,23 @@ import Image from "next/image";
 import db from "../../(db)/index";
 import { cookies } from "next/headers";
 import EnterGradesForm from "@/app/(components)/enter-grades-form";
+import LevelOfStudy from "@/app/(data)/level-of-study";
+import GradeType from "@/app/(data)/grade";
+import FieldsAndCourses from "@/app/(data)/fields-and-courses";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
     return user?.userFName;
 };
 
+const GetUserGrades = async () => {
+    const userGrades = await db.getUserGrades(cookies());
+    return userGrades;
+};
+
 export default async function Page() {
     const userName = await GetUserName();
+    const userGrades = await GetUserGrades();
 
     return (
         <div>
@@ -44,9 +53,7 @@ export default async function Page() {
                         Account Settings
                     </a>
 
-                    <button
-                        className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:opacity-75"
-                    >
+                    <button className="text-white font-bold py-2 px-4 rounded bg-red-500 hover:opacity-75">
                         Logout
                     </button>
                 </div>
@@ -57,9 +64,12 @@ export default async function Page() {
 
             {/* Main Content */}
             <main className="flex flex-col min-h-screen items-center justify-center p-10">
-
-                <EnterGradesForm />
-                
+                <EnterGradesForm
+                    levelOfStudyData={LevelOfStudy}
+                    gradeTypeData={GradeType}
+                    fieldsAndCoursesData={FieldsAndCourses}
+                    userGrades={userGrades}
+                />
             </main>
         </div>
     );
