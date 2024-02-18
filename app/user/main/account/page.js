@@ -24,7 +24,7 @@ export default async function Page() {
             <div className="h-20 w-full"></div>
 
             {/* Main Content */}
-            <main className="flex flex-col min-h-screen items-center justify-center p-10">
+            <main className="flex flex-col min-h-screen items-center justify-center p-5">
                 <AccountInfomationForm userData={user} />
 
                 <AccountSecurityForm verified={user?.verified} />

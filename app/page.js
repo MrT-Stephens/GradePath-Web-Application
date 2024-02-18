@@ -11,7 +11,7 @@ export default function Home() {
                 <NavBarItem href="/auth/register" text="Register" />
             </NavBar>
 
-            <main className="flex min-h-screen items-center justify-center px-10 py-32 pb-10 md:px-0 max-w-6xl mx-auto">
+            <main className="flex min-h-screen items-center justify-center px-5 py-32 pb-10 md:px-0 max-w-6xl mx-auto">
                 <div className="w-full flex flex-col md:flex-row space-x-0 space-y-10 md:space-y-0 md:space-x-10">
                     <div className="text-center md:text-left my-auto space-y-4 md:w-2/3">
                         <h1 className="text-5xl font-bold">

@@ -32,7 +32,7 @@ export default async function Page() {
             </NavBar>
 
             {/* Main Content */}
-            <main className="flex flex-col min-h-screen items-center justify-center px-10 pb-10 pt-24">
+            <main className="flex flex-col min-h-screen items-center justify-center px-5 pb-10 pt-24">
                 <EnterGradesForm
                     levelOfStudyData={LevelOfStudy}
                     gradeTypeData={GradeType}

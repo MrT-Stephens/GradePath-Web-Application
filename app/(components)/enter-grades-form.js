@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import MessageBox from "@/app/(components)/message-box";
 
 export default function EnterGradesForm({
     userGrades,
@@ -12,6 +13,8 @@ export default function EnterGradesForm({
     const [selectedGrade, setSelectedGrade] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [error, setError] = useState("");
+    const [showError, setShowError] = useState(false);
 
     const handleCourseChange = (event) => {
         setSelectedCourse(event.target.value);
@@ -30,7 +33,9 @@ export default function EnterGradesForm({
         setDropdownOpen(!dropdownOpen);
     };
 
-    const handleAddCourse = () => {
+    const handleAddCourse = async (e) => {
+        e.preventDefault();
+
         if (
             selectedCourse !== "" &&
             selectedGrade !== "" &&
@@ -41,18 +46,60 @@ export default function EnterGradesForm({
             setSelectedLevel(""); // Clear selected level
             setDropdownOpen(false); // Close the dropdown
         }
+
+        try {
+            const form = {
+                gradeCourseName: selectedCourse,
+                gradeMark: selectedGrade,
+                gradeLevelofStudy: selectedLevel,
+            };
+
+            const response = await fetch("/api/grades/add", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (!response.ok) {
+                setError("Failed to add grade");
+                setShowError(true);
+                return;
+            }
+
+            const result = await response.json();
+
+            if (result.id) {
+                return;
+            } else {
+                setError("Failed to add grade");
+            }
+        } catch (err) {
+            setError("Failed to add grade");
+        }
+
+        setShowError(true);
     };
 
-    const handleRemoveEntry = (id) => {
-        
-    };
+    const handleRemoveEntry = (id) => {};
 
     return (
         <div className="w-full lg:w-1/2 bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-2xl">
+            {showError ? (
+                <MessageBox
+                    title="Error"
+                    message={error}
+                    onClose={() => setShowError(false)}
+                />
+            ) : (
+                <></>
+            )}
+
             <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-2xl">
                 <div className="p-8 text-white flex flex-row gap-6 relative">
                     <div className="flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex hover:ring-indigo-600">
-                        <h1 className="text-2xl font-bold">Add Course &rarr;</h1>
+                        <h1 className="text-2xl font-bold">
+                            Add Course &rarr;
+                        </h1>
                         <div className="flex-grow"></div>
                         <button
                             className="group flex-none px-4 text-black ring-2 ring-gray-500 rounded-xl font-bold py-2 hover:opacity-75"
@@ -73,7 +120,7 @@ export default function EnterGradesForm({
                         </button>
                     </div>
                     <div
-                        className={`absolute top-20 right-8 z-50 p-1 w-1/2 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl ${
+                        className={`absolute top-20 right-8 z-50 p-1 w-2/3 lg:w-1/2 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl ${
                             dropdownOpen ? "" : "hidden"
                         }`}
                     >
@@ -93,15 +140,25 @@ export default function EnterGradesForm({
                                     className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
                                 >
                                     <option value="">Select Course</option>
-                                    {fieldsAndCoursesData.map((field, index) => (
-                                        <optgroup key={index} label={field.field}>
-                                            {field.courses.map((course, index) => (
-                                                <option key={index} value={course}>
-                                                    {course}
-                                                </option>
-                                            ))}
-                                        </optgroup>
-                                    ))}
+                                    {fieldsAndCoursesData.map(
+                                        (field, index) => (
+                                            <optgroup
+                                                key={index}
+                                                label={field.field}
+                                            >
+                                                {field.courses.map(
+                                                    (course, index) => (
+                                                        <option
+                                                            key={index}
+                                                            value={course}
+                                                        >
+                                                            {course}
+                                                        </option>
+                                                    )
+                                                )}
+                                            </optgroup>
+                                        )
+                                    )}
                                 </select>
 
                                 <label
@@ -119,7 +176,10 @@ export default function EnterGradesForm({
                                 >
                                     <option value="">Select Grade</option>
                                     {gradeTypeData.map((grade, index) => (
-                                        <optgroup key={index} label={grade.grade}>
+                                        <optgroup
+                                            key={index}
+                                            label={grade.grade}
+                                        >
                                             {grade.grades.map((g, index) => (
                                                 <option key={index} value={g}>
                                                     {g}
@@ -144,7 +204,10 @@ export default function EnterGradesForm({
                                 >
                                     <option value="">Select Level</option>
                                     {levelOfStudyData.map((level, index) => (
-                                        <optgroup key={index} label={level.level}>
+                                        <optgroup
+                                            key={index}
+                                            label={level.level}
+                                        >
                                             {level.levels.map((l, index) => (
                                                 <option key={index} value={l}>
                                                     {l}
@@ -179,34 +242,30 @@ export default function EnterGradesForm({
                                         <div className="p-3 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
                                             <div className="flex flex-col space-y-2">
                                                 <div className="flex flex-row space-x-4">
-                                                    <div>
-                                                        Course Name:
-                                                    </div>
+                                                    <div>Course Name:</div>
                                                     <div>
                                                         {entry.gradeCourseName}
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row space-x-4">
-                                                    <div>
-                                                        Grade Mark:
-                                                    </div>
-                                                    <div>
-                                                        {entry.gradeMark}
-                                                    </div>
+                                                    <div>Grade Mark:</div>
+                                                    <div>{entry.gradeMark}</div>
                                                 </div>
                                                 <div className="flex flex-row space-x-4">
+                                                    <div>Level of Study:</div>
                                                     <div>
-                                                        Level of Study:
-                                                    </div>
-                                                    <div>
-                                                        {entry.gradeLevelofStudy}
+                                                        {
+                                                            entry.gradeLevelofStudy
+                                                        }
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-row space-x-4 pt-2">
                                                     <button
                                                         className="px-4 bg-red-500 rounded-xl text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-28"
                                                         onClick={() =>
-                                                            handleRemoveEntry(entry.id)
+                                                            handleRemoveEntry(
+                                                                entry.id
+                                                            )
                                                         }
                                                     >
                                                         Remove

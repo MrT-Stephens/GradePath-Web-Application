@@ -36,7 +36,8 @@ export class DatabaseClient {
 
             return result;
         } catch (err) {
-
+            console.error(err);
+            throw new Error(err.message || err.toString());
         }
     }
 
@@ -88,6 +89,21 @@ export class DatabaseClient {
             });
         
         return grades;
+    }
+
+    async addUserGrade(cookieStore, grade) {
+        const user = await this.getUser(cookieStore);
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const result = await this.client.collection('userGrade').create({
+            ...grade,
+            userID: user.id
+        });
+
+        return result;
     }
 }
 
