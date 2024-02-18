@@ -90,7 +90,10 @@ export default function EnterGradesForm({
         const yesButton = element.querySelector("#remove-yes-button");
         const noButton = element.querySelector("#remove-no-button");
 
-        removeButton.className = removeButton.className.replace("bg-red-500", "bg-gray-500");
+        removeButton.className = removeButton.className.replace(
+            "bg-red-500",
+            "bg-gray-500"
+        );
         removeButton.textContent = "Are you sure?";
 
         yesButton.className = yesButton.className.replace("hidden", "block");
@@ -111,8 +114,7 @@ export default function EnterGradesForm({
                 setError("Failed to remove grade 1");
                 setShowError(true);
                 return;
-            }
-            else {
+            } else {
                 router.refresh();
                 return;
             }
@@ -129,7 +131,10 @@ export default function EnterGradesForm({
         const yesButton = element.querySelector("#remove-yes-button");
         const noButton = element.querySelector("#remove-no-button");
 
-        removeButton.className = removeButton.className.replace("bg-gray-500", "bg-red-500");
+        removeButton.className = removeButton.className.replace(
+            "bg-gray-500",
+            "bg-red-500"
+        );
         removeButton.textContent = "Remove";
 
         yesButton.className = yesButton.className.replace("block", "hidden");
@@ -152,7 +157,7 @@ export default function EnterGradesForm({
 
             <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-2xl flex flex-col">
                 <div className="p-8 text-white flex flex-row gap-6 relative">
-                    <div 
+                    <div
                         className="group flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex hover:ring-indigo-600"
                         onClick={handleDropdown}
                     >
@@ -287,8 +292,14 @@ export default function EnterGradesForm({
                 </div>
                 <div className="p-8 text-white flex flex-row gap-6"></div>
                 <div className="text-white">
-                    <h1 className={`px-8 text-2xl font-bold mb-4 ${userGrades.items.length > 0 ? "" : "pb-8"}`}>
-                        {userGrades.items.length > 0 ? "Course's & Grade's" : "No Course's & Grade's Added. Click Add Course to Add One."}
+                    <h1
+                        className={`px-8 text-2xl font-bold mb-4 ${
+                            userGrades.items.length > 0 ? "" : "pb-8"
+                        }`}
+                    >
+                        {userGrades.items.length > 0
+                            ? "Course's & Grade's"
+                            : "No Course's & Grade's Added. Click Add Course to Add One."}
                     </h1>
                     {userGrades.items.length > 0 && (
                         <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
