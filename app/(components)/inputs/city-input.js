@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function CityInput({ onCityChange, className, enabled = true, value }) {
+export default function CityInput({
+    onCityChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userCity, setUserCity] = useState("");
     const [userCityCorrect, setUserCityCorrect] = useState(false);
 
@@ -26,7 +31,9 @@ export default function CityInput({ onCityChange, className, enabled = true, val
         <input
             type="text"
             className={`${className || ""} border-2 ${
-                userCityCorrect ? "border-green-500" : "border-red-500"
+                userCityCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userCity"
             name="userCity"

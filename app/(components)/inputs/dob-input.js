@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function DoBInput({ onDoBChange, className, enabled = true, value }) {
+export default function DoBInput({
+    onDoBChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userDoB, setUserDoB] = useState("");
     const [userDoBCorrect, setUserDoBCorrect] = useState(false);
 
@@ -26,7 +31,9 @@ export default function DoBInput({ onDoBChange, className, enabled = true, value
         <input
             type="date"
             className={`${className || ""} border-2 ${
-                userDoBCorrect ? "border-green-500" : "border-red-500"
+                userDoBCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userDoB"
             name="userDoB"

@@ -7,7 +7,7 @@ export default function ConfirmPasswordInput({
     className,
     otherPassword,
     enabled = true,
-    value
+    value,
 }) {
     const [userConfirmPassword, setUserConfirmPassword] = useState("");
     const [userConfirmPasswordCorrect, setUserConfirmPasswordCorrect] =
@@ -39,8 +39,8 @@ export default function ConfirmPasswordInput({
             type="password"
             className={`${className || ""} border-2 ${
                 userConfirmPasswordCorrect
-                    ? "border-green-500"
-                    : "border-red-500"
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userConfirmPassword"
             name="userConfirmPassword"

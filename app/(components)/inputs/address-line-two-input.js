@@ -33,8 +33,8 @@ export default function AddressLineTwoInput({
             type="text"
             className={`${className || ""} border-2 ${
                 userAddressLineTwoCorrect
-                    ? "border-green-500"
-                    : "border-red-500"
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userAddressLine2"
             name="userAddressLine2"

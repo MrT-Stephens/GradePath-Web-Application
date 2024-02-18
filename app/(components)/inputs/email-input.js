@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function EmailInput({ onEmailChange, className, enabled = true, value }) {
+export default function EmailInput({
+    onEmailChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userEmail, setUserEmail] = useState("");
     const [userEmailCorrect, setUserEmailCorrect] = useState(false);
 
@@ -21,12 +26,14 @@ export default function EmailInput({ onEmailChange, className, enabled = true, v
         setUserEmail(value);
         validate(value);
     }, [value]);
-    
+
     return (
         <input
             type="email"
             className={`${className || ""} border-2 ${
-                userEmailCorrect ? "border-green-500" : "border-red-500"
+                userEmailCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userEmail"
             name="userEmail"

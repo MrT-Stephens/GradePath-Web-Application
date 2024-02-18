@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function PasswordInput({ onPasswordChange, className, enabled = true, value }) {
+export default function PasswordInput({
+    onPasswordChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userPassword, setUserPassword] = useState("");
     const [userPasswordCorrect, setUserPasswordCorrect] = useState(false);
 
@@ -27,7 +32,9 @@ export default function PasswordInput({ onPasswordChange, className, enabled = t
         <input
             type="password"
             className={`${className || ""} border-2 ${
-                userPasswordCorrect ? "border-green-500" : "border-red-500"
+                userPasswordCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userPassword"
             name="userPassword"

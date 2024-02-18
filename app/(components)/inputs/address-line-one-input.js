@@ -33,8 +33,8 @@ export default function AddressLineOneInput({
             type="text"
             className={`${className || ""} border-2 ${
                 userAddressLineOneCorrect
-                    ? "border-green-500"
-                    : "border-red-500"
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userAddressLine1"
             name="userAddressLine1"

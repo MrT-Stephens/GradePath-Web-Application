@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function LastNameInput({ onLastNameChange, className, enabled = true, value }) {
+export default function LastNameInput({
+    onLastNameChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userLName, setUserLName] = useState("");
     const [userLNameCorrect, setUserLNameCorrect] = useState(false);
 
@@ -26,7 +31,9 @@ export default function LastNameInput({ onLastNameChange, className, enabled = t
         <input
             type="text"
             className={`${className || ""} border-2 ${
-                userLNameCorrect ? "border-green-500" : "border-red-500"
+                userLNameCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userLName"
             name="userLName"

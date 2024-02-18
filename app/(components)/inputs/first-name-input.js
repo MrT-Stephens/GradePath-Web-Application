@@ -2,7 +2,12 @@
 
 import { useEffect, useState } from "react";
 
-export default function FirstNameInput({ onFirstNameChange, className, enabled = true, value }) {
+export default function FirstNameInput({
+    onFirstNameChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userFName, setUserFName] = useState("");
     const [userFNameCorrect, setUserFNameCorrect] = useState(false);
 
@@ -26,7 +31,9 @@ export default function FirstNameInput({ onFirstNameChange, className, enabled =
         <input
             type="text"
             className={`${className || ""} border-2 ${
-                userFNameCorrect ? "border-green-500" : "border-red-500"
+                userFNameCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userFName"
             name="userFName"

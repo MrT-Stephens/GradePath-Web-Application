@@ -2,7 +2,12 @@
 
 import { useState, useEffect } from "react";
 
-export default function PostcodeInput({ onPostcodeChange, className, enabled = true, value }) {
+export default function PostcodeInput({
+    onPostcodeChange,
+    className,
+    enabled = true,
+    value,
+}) {
     const [userPostcode, setUserPostcode] = useState("");
     const [userPostcodeCorrect, setUserPostcodeCorrect] = useState(false);
 
@@ -26,7 +31,9 @@ export default function PostcodeInput({ onPostcodeChange, className, enabled = t
         <input
             type="text"
             className={`${className || ""} border-2 ${
-                userPostcodeCorrect ? "border-green-500" : "border-red-500"
+                userPostcodeCorrect
+                    ? "focus:border-green-500"
+                    : "focus:border-red-500"
             }`}
             id="userPostcode"
             name="userPostcode"
