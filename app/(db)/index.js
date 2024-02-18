@@ -105,6 +105,27 @@ export class DatabaseClient {
 
         return result;
     }
+
+    async removeUserGrade(cookieStore, gradeID) {
+        const user = await this.getUser(cookieStore);
+
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const grade = await this.client.collection('userGrade').getOne(gradeID);
+
+        if (!grade) {
+            throw new Error("Grade not found");
+        }
+        else if (grade.userID !== user.id) {
+            throw new Error("Unauthorized");
+        }
+
+        const result = await this.client.collection('userGrade').delete(gradeID);
+
+        return result;
+    }
 }
 
 // We create an instance of the DatabaseClient that can be used throughout the app.

@@ -1,4 +1,3 @@
-import Image from "next/image";
 import db from "../../(db)/index";
 import { cookies } from "next/headers";
 import EnterGradesForm from "@/app/(components)/enter-grades-form";
