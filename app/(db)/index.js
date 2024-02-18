@@ -67,12 +67,18 @@ export class DatabaseClient {
         return this.client.authStore.model;
     }
 
-    // logout clears the cookie
-    logout(cookieStore) {
-        cookieStore.set('pb_auth_GradePath', null);
+    async updateUser(cookieStore, data) {
+        const user = await this.getUser(cookieStore);
 
-        // We also clear the authStore
-        this.client.authStore.clear();
+        if (!user) {
+            throw new Error("User not found");
+        }
+
+        const result = await this.client.collection('users').update(user.id, data);
+
+
+
+        return result;
     }
 
     async getUserGrades(cookieStore) {

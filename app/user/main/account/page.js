@@ -1,4 +1,3 @@
-import Image from "next/image";
 import AccountInfomationForm from "@/app/(components)/account-infomation-form";
 import AccountSecurityForm from "@/app/(components)/account-security-form";
 import DeleteAccountForm from "@/app/(components)/delete-account-form";

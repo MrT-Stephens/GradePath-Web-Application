@@ -8,7 +8,8 @@ import AddressLineOneInput from "./inputs/address-line-one-input";
 import AddressLineTwoInput from "./inputs/address-line-two-input";
 import CityInput from "./inputs/city-input";
 import PostcodeInput from "./inputs/postcode-input";
-import EmailInput from "./inputs/email-input";
+import MessageBox from "./message-box";
+import { useRouter } from "next/navigation";
 
 export default function AccountInfomationForm({ userData }) {
     const [userFName, setUserFName] = useState(userData?.userFName || "");
@@ -24,8 +25,11 @@ export default function AccountInfomationForm({ userData }) {
     const [userPostcode, setUserPostcode] = useState(
         userData?.userPostcode || ""
     );
-    const [email, setEmail] = useState(userData?.email || "");
     const [isEditing, setIsEditing] = useState(false);
+    const [error, setError] = useState("");
+    const [showError, setShowError] = useState(false);
+
+    const router = useRouter();
 
     const handleEdit = (e) => {
         e.preventDefault();
@@ -33,11 +37,59 @@ export default function AccountInfomationForm({ userData }) {
     };
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
 
+        if (isEditing === false) return;
+
+        try {
+            const form = {
+                userFName,
+                userLName,
+                userDoB,
+                userAddressLine1,
+                userAddressLine2,
+                userCity,
+                userPostcode
+            };
+
+            const response = await fetch("/api/user/update", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(form),
+            });
+
+            if (!response.ok) {
+                setError("Failed to update user information");
+                setIsEditing(false);
+                setShowError(true);
+                return;
+            }
+            else {
+                setIsEditing(false);
+                router.refresh();
+                return;
+            }
+        } catch (err) {
+            console.log(err);
+            setError("Failed to update user information");
+        }
+
+        setIsEditing(false);
+        setShowError(true);
     };
 
     return (
         <div className="lg:w-1/2 w-full bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8">
+            {showError ? (
+                <MessageBox
+                    title="Error"
+                    message={error}
+                    onClose={() => setShowError(false)}
+                />
+            ) : (
+                <></>
+            )}
+
             <form className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
                 <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">
@@ -86,14 +138,8 @@ export default function AccountInfomationForm({ userData }) {
                     />
                     <PostcodeInput
                         onPostcodeChange={(value) => setUserPostcode(value)}
-                        className="min-w-60 h-10 rounded-xl text-black p-2"
+                        className="min-w-60 h-10 rounded-xl text-black p-2 lg:col-span-2"
                         value={userPostcode}
-                        enabled={isEditing}
-                    />
-                    <EmailInput
-                        onEmailChange={(value) => setEmail(value)}
-                        className="min-w-60 h-10 rounded-xl text-black p-2"
-                        value={email}
                         enabled={isEditing}
                     />
                 </div>
