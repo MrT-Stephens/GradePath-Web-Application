@@ -44,8 +44,8 @@ export default function Home() {
                             </svg>
                         </a>
                     </div>
-
-                    <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl my-auto">
+                    
+                    <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl my-auto lg:w-2/5">
                         <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl p-10">
                             <h1 className="text-4xl font-bold text-left text-black dark:text-white mb-10">
                                 Login to your account

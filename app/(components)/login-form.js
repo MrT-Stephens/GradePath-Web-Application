@@ -8,7 +8,9 @@ import MessageBox from "@/app/(components)/message-box";
 
 export default function Login() {
     const [email, setEmail] = useState("");
+    const [emailCorrect, setEmailCorrect] = useState(false);
     const [password, setPassword] = useState("");
+    const [passwordCorrect, setPasswordCorrect] = useState(false);
     const [error, setError] = useState("");
     const [showError, setShowError] = useState(false);
 
@@ -17,35 +19,48 @@ export default function Login() {
     const handelSubmit = async (e) => {
         e.preventDefault();
 
-        try {
-            const form = { email, password };
-            const response = await fetch("/api/auth/login", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify(form),
-            });
-
-            if (!response.ok) {
-                setError("Failed to authenticate user");
-                setShowError(true);
-                return;
-            }
-
-            const data = await response.json();
-
-            if (data?.token) {
-                router.push(`/user/main/`);
-                return;
-            } else {
-                setError("Failed to authenticate user");
-            }
-        } catch (error) {
-            setError("Failed to authenticate user");
+        if (!emailCorrect)
+        {
+            setError("Email is invalid. Please enter a valid email");
+            setShowError(true);
         }
+        else if (!passwordCorrect)
+        {
+            setError("Password is invalid. Please enter a valid password");
+            setShowError(true);
+        }
+        else
+        {
+            try {
+                const form = { email, password };
+                const response = await fetch("/api/auth/login", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(form),
+                });
 
-        setShowError(true);
+                if (!response.ok) {
+                    setError("Failed to authenticate user");
+                    setShowError(true);
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (data?.token) {
+                    router.push(`/user/main/`);
+                    return;
+                } else {
+                    setError("Failed to authenticate user");
+                }
+            } catch (error) {
+                setError("Failed to authenticate user");
+            }
+
+            setShowError(true);
+        }
     };
 
     return (
@@ -69,20 +84,52 @@ export default function Login() {
                         Your email
                     </label>
                     <EmailInput
-                        onEmailChange={(value) => setEmail(value)}
+                        onEmailChange={(value, valid) => {
+                            setEmail(value);
+                            setEmailCorrect(valid);
+                        }}
                         className="h-10 rounded-xl text-black p-2 mt-1 w-full"
                         value={email}
                     />
+                    {emailCorrect ? (
+                        <></>
+                    ) : (
+                        <p
+                            className={`text-sm text-red-500 text-left mt-2 transition-all ease-in-out duration-700 ${
+                                emailCorrect ? "opacity-0" : "opacity-100"
+                            }`}
+                        >
+                            Email is invalid. Please enter a valid email in the
+                            format of 'example@gmail.com'.
+                        </p>
+                    )}
                 </div>
                 <div className="w-full">
                     <label className="text-left text-black dark:text-white">
                         Your password
                     </label>
                     <PasswordInput
-                        onPasswordChange={(value) => setPassword(value)}
+                        onPasswordChange={(value, valid) => {
+                            setPassword(value);
+                            setPasswordCorrect(valid);
+                        }}
                         className="h-10 rounded-xl text-black p-2 mt-1 w-full"
                         value={password}
                     />
+                    {passwordCorrect ? (
+                        <></>
+                    ) : (
+                        <p
+                            className={`text-sm text-red-500 text-left mt-2 transition-all ease-in-out duration-700 ${
+                                passwordCorrect ? "opacity-0" : "opacity-100"
+                            }`}
+                        >
+                            Password is invalid. Please enter a valid password
+                            with a minimum of 8 characters, at least one uppercase
+                            letter, one lowercase letter, one number and one
+                            special character (!@#$%^&*).
+                        </p>
+                    )}
                 </div>
 
                 <button

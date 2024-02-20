@@ -13,13 +13,14 @@ export default function EmailInput({
 
     const validate = (value) => {
         let emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-        setUserEmailCorrect(emailRegex.test(value));
+        return emailRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserEmail(e.target.value);
-        onEmailChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onEmailChange(e.target.value, valid);
+        setUserEmailCorrect(valid);
     };
 
     useEffect(() => {

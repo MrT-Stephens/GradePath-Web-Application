@@ -14,13 +14,14 @@ export default function PasswordInput({
     const validate = (value) => {
         let passwordRegex =
             /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
-        setUserPasswordCorrect(passwordRegex.test(value));
+        return passwordRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserPassword(e.target.value);
-        onPasswordChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onPasswordChange(e.target.value, valid);
+        setUserPasswordCorrect(valid);
     };
 
     useEffect(() => {
