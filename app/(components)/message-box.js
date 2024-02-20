@@ -7,6 +7,14 @@ export default function MessageBox({ title, message, onClose }) {
 
     useEffect(() => {
         setIsVisible(true);
+
+        setTimeout(() => {
+            setIsVisible(false);
+
+            setTimeout(() => {
+                onClose();
+            }, 1000);
+        }, 10000);
     }, []);
 
     return (

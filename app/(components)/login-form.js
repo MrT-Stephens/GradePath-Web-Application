@@ -13,24 +13,22 @@ export default function Login() {
     const [passwordCorrect, setPasswordCorrect] = useState(false);
     const [error, setError] = useState("");
     const [showError, setShowError] = useState(false);
+    const [submitClicked, setSubmitClicked] = useState(false);
 
     const router = useRouter();
 
     const handelSubmit = async (e) => {
         e.preventDefault();
 
-        if (!emailCorrect)
-        {
+        setSubmitClicked(true);
+
+        if (!emailCorrect) {
             setError("Email is invalid. Please enter a valid email");
             setShowError(true);
-        }
-        else if (!passwordCorrect)
-        {
+        } else if (!passwordCorrect) {
             setError("Password is invalid. Please enter a valid password");
             setShowError(true);
-        }
-        else
-        {
+        } else {
             try {
                 const form = { email, password };
                 const response = await fetch("/api/auth/login", {
@@ -91,9 +89,7 @@ export default function Login() {
                         className="h-10 rounded-xl text-black p-2 mt-1 w-full"
                         value={email}
                     />
-                    {emailCorrect ? (
-                        <></>
-                    ) : (
+                    {!emailCorrect && submitClicked ? (
                         <p
                             className={`text-sm text-red-500 text-left mt-2 transition-all ease-in-out duration-700 ${
                                 emailCorrect ? "opacity-0" : "opacity-100"
@@ -102,6 +98,8 @@ export default function Login() {
                             Email is invalid. Please enter a valid email in the
                             format of 'example@gmail.com'.
                         </p>
+                    ) : (
+                        <></>
                     )}
                 </div>
                 <div className="w-full">
@@ -116,19 +114,19 @@ export default function Login() {
                         className="h-10 rounded-xl text-black p-2 mt-1 w-full"
                         value={password}
                     />
-                    {passwordCorrect ? (
-                        <></>
-                    ) : (
+                    {!passwordCorrect && submitClicked ? (
                         <p
                             className={`text-sm text-red-500 text-left mt-2 transition-all ease-in-out duration-700 ${
                                 passwordCorrect ? "opacity-0" : "opacity-100"
                             }`}
                         >
                             Password is invalid. Please enter a valid password
-                            with a minimum of 8 characters, at least one uppercase
-                            letter, one lowercase letter, one number and one
-                            special character (!@#$%^&*).
+                            with a minimum of 8 characters, at least one
+                            uppercase letter, one lowercase letter, one number
+                            and one special character (!@#$%^&*).
                         </p>
+                    ) : (
+                        <></>
                     )}
                 </div>
 
