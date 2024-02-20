@@ -11,7 +11,7 @@ export default function MessageBox({ title, message, onClose }) {
 
     return (
         <div
-            className={`fixed top-0 start-0 z-50 lg:max-w-3xl flex flex-row justify-between p-4 m-10 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl border-2 border-gray-500 transition-opacity duration-1000 ease-in-out ${
+            className={`fixed bottom-0 right-0 z-50 lg:max-w-3xl flex flex-row justify-between p-4 m-10 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl border-2 border-gray-500 transition-opacity duration-1000 ease-in-out ${
                 isVisible ? "opacity-100" : "opacity-0"
             }`}
         >
@@ -20,10 +20,10 @@ export default function MessageBox({ title, message, onClose }) {
                 <span className="relative inline-flex rounded-full h-3 w-3 bg-gradient-to-r from-green-400 to-blue-500"></span>
             </span>
             <div className="mb-4 md:mb-0 md:me-4">
-                <h2 className="mb-1 text-base font-semibold text-gray-900 dark:text-white">
+                <h2 className="mb-1 text-xl font-semibold text-gray-900 dark:text-white">
                     {title}
                 </h2>
-                <p className="flex items-center text-sm font-normal text-gray-500 dark:text-gray-400">
+                <p className="flex items-center text-lg font-normal text-gray-500 dark:text-gray-400">
                     {message}
                 </p>
             </div>
