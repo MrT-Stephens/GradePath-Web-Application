@@ -14,13 +14,14 @@ export default function AddressLineTwoInput({
 
     const validate = (value) => {
         let AddressLineTwoRegex = /^[a-zA-Z0-9\s.,#'-]{0,100}$/;
-        setUserAddressLineTwoCorrect(AddressLineTwoRegex.test(value));
+        return AddressLineTwoRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserAddressLine2(e.target.value);
-        onAddressLineTwoChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onAddressLineTwoChange(e.target.value, valid);
+        setUserAddressLineTwoCorrect(valid);
     };
 
     useEffect(() => {

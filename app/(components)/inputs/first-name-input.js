@@ -13,13 +13,14 @@ export default function FirstNameInput({
 
     const validate = (value) => {
         let fNameRegex = /^[a-zA-Z0-9]{2,20}$/;
-        setUserFNameCorrect(fNameRegex.test(value));
+        return fNameRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserFName(e.target.value);
-        onFirstNameChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onFirstNameChange(e.target.value, valid);
+        setUserFNameCorrect(valid);
     };
 
     useEffect(() => {

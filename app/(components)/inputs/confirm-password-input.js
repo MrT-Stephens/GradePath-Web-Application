@@ -28,6 +28,7 @@ export default function ConfirmPasswordInput({
 
     const handleChange = (e) => {
         setUserConfirmPassword(e.target.value);
+        onConfirmPasswordChange(e.target.value);
     };
 
     useEffect(() => {

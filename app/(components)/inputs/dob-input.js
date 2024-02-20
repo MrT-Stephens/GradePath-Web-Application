@@ -13,13 +13,14 @@ export default function DoBInput({
 
     const validate = (value) => {
         let DoBRegex = /^\d{4}-\d{2}-\d{2}$/;
-        setUserDoBCorrect(DoBRegex.test(value));
+        return DoBRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserDoB(e.target.value);
-        onDoBChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onDoBChange(e.target.value, valid);
+        setUserDoBCorrect(valid);
     };
 
     useEffect(() => {

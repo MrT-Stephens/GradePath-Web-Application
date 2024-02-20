@@ -13,13 +13,14 @@ export default function PostcodeInput({
 
     const validate = (value) => {
         let PostcodeRegex = /^[a-zA-Z0-9\s-]{3,10}$/;
-        setUserPostcodeCorrect(PostcodeRegex.test(value));
+        return PostcodeRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserPostcode(e.target.value);
-        onPostcodeChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onPostcodeChange(e.target.value, valid);
+        setUserPostcodeCorrect(valid);
     };
 
     useEffect(() => {

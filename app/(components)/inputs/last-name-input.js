@@ -13,13 +13,14 @@ export default function LastNameInput({
 
     const validate = (value) => {
         let lNameRegex = /^[a-zA-Z0-9]{2,20}$/;
-        setUserLNameCorrect(lNameRegex.test(value));
+        return lNameRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserLName(e.target.value);
-        onLastNameChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onLastNameChange(e.target.value, valid);
+        setUserLNameCorrect(valid);
     };
 
     useEffect(() => {

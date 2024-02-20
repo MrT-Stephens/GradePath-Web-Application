@@ -13,13 +13,14 @@ export default function CityInput({
 
     const validate = (value) => {
         let cityRegex = /^[a-zA-Z]{2,20}$/;
-        setUserCityCorrect(cityRegex.test(value));
+        return cityRegex.test(value);
     };
 
     const handleChange = (e) => {
         setUserCity(e.target.value);
-        onCityChange(e.target.value);
-        validate(e.target.value);
+        const valid = validate(e.target.value);
+        onCityChange(e.target.value, valid);
+        setUserCityCorrect(valid);
     };
 
     useEffect(() => {
