@@ -78,6 +78,8 @@ export default function Register() {
             setError(
                 "Passwords do not match. Please enter matching passwords."
             );
+        } else if (!termsState) {
+            setError("Please accept the terms and conditions.");
         } else {
             return true;
         }
@@ -248,7 +250,8 @@ export default function Register() {
                     !userPostcodeCorrect ||
                     !emailCorrect ||
                     !passwordCorrect ||
-                    password != passwordConfirm) &&
+                    password != passwordConfirm ||
+                    !termsState) &&
                 submitClicked ? (
                     <p className="text-sm text-red-500 text-center mt-2 transition-all ease-in-out duration-700 lg:col-span-2">
                         {error}

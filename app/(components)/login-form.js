@@ -29,6 +29,9 @@ export default function Login() {
         } else if (!passwordCorrect) {
             setError("Password is invalid. Please enter a valid password");
             setShowError(true);
+        } else if (!termsState) {
+            setError("Please accept the terms and conditions");
+            setShowError(true);
         } else {
             try {
                 const form = { email, password };
