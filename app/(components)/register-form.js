@@ -257,6 +257,23 @@ export default function Register() {
                     <></>
                 )}
 
+                <div className="flex flex-row space-x-2 lg:col-span-2 justify-center">
+                    <input
+                        type="checkbox"
+                        className="rounded-xl"
+                        id="remember"
+                        onChange={() => {
+                            setTermsState(!termsState);
+                        }}
+                    />
+                    <a
+                        htmlFor="remember"
+                        className="text-black dark:text-white hover:underline cursor-pointer"
+                    >
+                        Accept Terms and Conditions
+                    </a>
+                </div>
+
                 <button
                     type="submit"
                     className="group mx-auto lg:col-span-2 w-3/4 h-10 bg-gradient-to-r from-green-400 to-blue-500 text-black dark:text-white font-bold rounded-xl"

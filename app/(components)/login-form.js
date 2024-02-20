@@ -14,6 +14,7 @@ export default function Login() {
     const [error, setError] = useState("");
     const [showError, setShowError] = useState(false);
     const [submitClicked, setSubmitClicked] = useState(false);
+    const [termsState, setTermsState] = useState(false);
 
     const router = useRouter();
 
@@ -128,6 +129,23 @@ export default function Login() {
                     ) : (
                         <></>
                     )}
+                </div>
+
+                <div className="flex flex-row space-x-2">
+                    <input
+                        type="checkbox"
+                        className="rounded-xl"
+                        id="remember"
+                        onChange={() => {
+                            setTermsState(!termsState);
+                        }}
+                    />
+                    <a
+                        htmlFor="remember"
+                        className="text-black dark:text-white hover:underline cursor-pointer"
+                    >
+                        Accept Terms and Conditions
+                    </a>
                 </div>
 
                 <button
