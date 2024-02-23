@@ -144,6 +144,7 @@ export default function Login() {
                         }}
                     />
                     <a
+                        href="/terms"
                         htmlFor="remember"
                         className="text-black dark:text-white hover:underline cursor-pointer"
                     >

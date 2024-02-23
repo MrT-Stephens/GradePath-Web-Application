@@ -91,7 +91,7 @@ export default function AccountInfomationForm({ userData }) {
             )}
 
             <form className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
-                <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="p-8 text-black dark:text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">
                         Account Information
                     </h1>
@@ -147,13 +147,13 @@ export default function AccountInfomationForm({ userData }) {
                 {/* Edit and Save buttons */}
                 <div className="flex justify-center items-end mt-4 space-x-2 mb-4">
                     <button
-                        className="bg-green-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded"
+                        className="bg-green-500 hover:opacity-75 text-black dark:text-white font-bold py-2 px-4 rounded"
                         onClick={handleEdit}
                     >
                         Edit
                     </button>
                     <button
-                        className="bg-blue-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded"
+                        className="bg-blue-500 hover:opacity-75 text-black dark:text-white font-bold py-2 px-4 rounded"
                         onClick={handleSubmit}
                     >
                         Save

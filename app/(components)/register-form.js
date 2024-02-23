@@ -270,6 +270,7 @@ export default function Register() {
                         }}
                     />
                     <a
+                        href="/terms"
                         htmlFor="remember"
                         className="text-black dark:text-white hover:underline cursor-pointer"
                     >

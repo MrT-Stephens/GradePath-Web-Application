@@ -94,6 +94,12 @@ export default function EnterGradesForm({
             "bg-red-500",
             "bg-gray-500"
         );
+
+        removeButton.className = removeButton.className.replace(
+            "hover:opacity-75",
+            "hover:opacity-100"
+        );
+
         removeButton.textContent = "Are you sure?";
 
         yesButton.className = yesButton.className.replace("hidden", "block");
@@ -135,6 +141,12 @@ export default function EnterGradesForm({
             "bg-gray-500",
             "bg-red-500"
         );
+
+        removeButton.className = removeButton.className.replace(
+            "hover:opacity-100",
+            "hover:opacity-75"
+        );
+
         removeButton.textContent = "Remove";
 
         yesButton.className = yesButton.className.replace("block", "hidden");
@@ -282,7 +294,7 @@ export default function EnterGradesForm({
                                 </select>
                             </div>
                             <button
-                                className="bg-green-500 rounded-xl text-white font-bold py-2 px-4 hover:opacity-75 self-center"
+                                className="bg-green-500 rounded-xl text-black dark:text-white font-bold py-2 px-4 hover:opacity-75 self-center"
                                 onClick={handleAddCourse}
                             >
                                 Add Course
@@ -290,8 +302,8 @@ export default function EnterGradesForm({
                         </div>
                     </div>
                 </div>
-                <div className="p-8 text-white flex flex-row gap-6"></div>
-                <div className="text-white">
+                <div className="p-8 text-black dark:text-white flex flex-row gap-6"></div>
+                <div className="text-black dark:text-white">
                     <h1
                         className={`px-8 text-2xl font-bold mb-4 ${
                             userGrades.items.length > 0 ? "" : "pb-8"
@@ -303,7 +315,7 @@ export default function EnterGradesForm({
                     </h1>
                     {userGrades.items.length > 0 && (
                         <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
-                            <div className="p-8 text-white flex flex-col space-y-4">
+                            <div className="p-8 text-black dark:text-white flex flex-col space-y-4">
                                 {userGrades.items.map((entry, index) => (
                                     <div
                                         id={entry.id}
@@ -333,7 +345,7 @@ export default function EnterGradesForm({
                                                 <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-4 space-y-2 lg:space-y-0 pt-2">
                                                     <button
                                                         id="remove-button"
-                                                        className="px-4 rounded-xl text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-red-500"
+                                                        className="px-4 rounded-xl text-black dark:text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-red-500"
                                                         onClick={() =>
                                                             handleRemoveEntry(
                                                                 entry.id
@@ -344,7 +356,7 @@ export default function EnterGradesForm({
                                                     </button>
                                                     <button
                                                         id="remove-yes-button"
-                                                        className="px-4 rounded-xl text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-green-500 hidden"
+                                                        className="px-4 rounded-xl text-black dark:text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-green-500 hidden"
                                                         onClick={() =>
                                                             handleRemoveEntryYes(
                                                                 entry.id
@@ -355,7 +367,7 @@ export default function EnterGradesForm({
                                                     </button>
                                                     <button
                                                         id="remove-no-button"
-                                                        className="px-4 rounded-xl text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-red-500 hidden"
+                                                        className="px-4 rounded-xl text-black dark:text-white font-bold py-2 hover:opacity-75 transition-opacity duration-500 ease-in-out w-36 bg-red-500 hidden"
                                                         onClick={() =>
                                                             handleRemoveEntryNo(
                                                                 entry.id

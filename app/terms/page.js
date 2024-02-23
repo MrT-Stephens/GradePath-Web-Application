@@ -13,12 +13,12 @@ export default function Page() {
 
             <main className="flex flex-col min-h-screen items-center justify-center p-5">
                 <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl lg:w-2/3">
-                    <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl p-10 w-full flex flex-col space-y-4">
+                    <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl p-4 lg:p-10 w-full flex flex-col space-y-4">
                         <h1 className="text-left text-4xl">Terms of Service</h1>
-                        <ul className="list-decimal list-inside text-left">
+                        <ul className="list-decimal list-inside leading-loose tracking-wide text-justify">
                             <li>
                                 Acceptance of Terms
-                                <ul className="ml-14 list-decimal list-outside text-left">
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
                                     <li>
                                         Welcome to GradePath ("the Website"). By
                                         accessing or using the Website,
@@ -39,7 +39,7 @@ export default function Page() {
                             </li>
                             <li>
                                 User Accounts
-                                <ul className="ml-14 list-decimal list-outside text-left">
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
                                     <li>
                                         To access certain features of the
                                         Website, you are required to create a
@@ -62,7 +62,7 @@ export default function Page() {
                             </li>
                             <li>
                                 Collection and Use of User Data
-                                <ul className="ml-14 list-decimal list-outside text-left">
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
                                     <li>
                                         By using the Website, you consent to the
                                         collection, storage, and processing of
@@ -89,13 +89,97 @@ export default function Page() {
                             </li>
                             <li>
                                 User Responsibilities
-                                <ul className="ml-14 list-decimal list-outside text-left">
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
                                     <li>
                                         You agree to use the Website only for
                                         lawful purposes and in accordance with
                                         these Terms. You shall not use the
                                         Website in any way that violates any
                                         applicable laws or regulations.
+                                    </li>
+                                    <li>
+                                        You are solely responsible for the
+                                        accuracy, completeness, and legality of
+                                        any information you submit to the
+                                        Website, including but not limited to
+                                        your inputted courses and grades.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Intellectual Property Rights
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
+                                    <li>
+                                        The Website and its entire contents,
+                                        features, and functionality are owned by
+                                        GradePath LTD or its licensors and are
+                                        protected by copyright, trademark, and
+                                        other intellectual property laws.
+                                    </li>
+                                    <li>
+                                        You may not modify, copy, distribute,
+                                        transmit, display, perform, reproduce,
+                                        publish, license, create derivative
+                                        works from, transfer, or sell any
+                                        information, software, products, or
+                                        services obtained from or through the
+                                        Website.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Limitation of Liability
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
+                                    <li>
+                                        To the fullest extent permitted by
+                                        applicable law, GradePath LTD shall not
+                                        be liable for any indirect, incidental,
+                                        special, consequential, or punitive
+                                        damages, or any loss of profits or
+                                        revenues, whether incurred directly or
+                                        indirectly, or any loss of data, use,
+                                        goodwill, or other intangible losses,
+                                        resulting from (a) your access to or use
+                                        of or inability to access or use the
+                                        Website; (b) any conduct or content of
+                                        any third party on the Website; or (c)
+                                        unauthorized access, use, or alteration
+                                        of your transmissions or content.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Modifications to Terms
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
+                                    <li>
+                                        GradePath LTD reserves the right to
+                                        modify these Terms at any time,
+                                        effective upon posting the updated Terms
+                                        on the Website. Your continued use of
+                                        the Website after any such changes shall
+                                        constitute your consent to such changes.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Governing Law and Jurisdiction
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
+                                    <li>
+                                        These Terms shall be governed by and
+                                        construed in accordance with the laws of
+                                        the United Kingdom, without giving
+                                        effect to any choice or conflict of law
+                                        provision or rule.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Contact Information
+                                <ul className="ml-7 lg:ml-14 list-decimal list-outside">
+                                    <li>
+                                        If you have any questions about these
+                                        Terms, please contact us at
+                                        feedback@gradepath.com.
                                     </li>
                                 </ul>
                             </li>

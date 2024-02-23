@@ -9,7 +9,7 @@ export default function DeleteAccountForm() {
     return (
         <div className="bg-red-500 p-1 rounded-xl mb-8 lg:w-1/2 w-full">
             <div className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
-                <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 space-y-6">
+                <div className="p-8 text-black dark:text-white grid grid-cols-1 lg:grid-cols-2 space-y-6">
                     <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">
                         Delete Account
                     </h1>
@@ -25,7 +25,7 @@ export default function DeleteAccountForm() {
                             className="min-w-60 h-10 rounded-xl text-black p-2 bg-white"
                         />
 
-                        <button className="bg-red-500 hover:opacity-75 text-white font-bold py-2 rounded">
+                        <button className="bg-red-500 hover:opacity-75 text-black dark:text-white font-bold py-2 rounded">
                             Delete Account
                         </button>
                     </div>

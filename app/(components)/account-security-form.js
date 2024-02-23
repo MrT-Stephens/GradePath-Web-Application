@@ -18,7 +18,7 @@ export default function AccountSecurityForm({ verified }) {
     return (
         <div className="bg-gradient-to-r from-green-400 to-blue-500 p-1 rounded-xl mb-8 lg:w-1/2 w-full">
             <form className="relative bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl overflow-hidden">
-                <div className="p-8 text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
+                <div className="p-8 text-black dark:text-white grid grid-cols-1 lg:grid-cols-2 gap-6">
                     <h1 className="text-3xl font-bold mb-4 mt-4 lg:col-span-2">
                         Account Security
                     </h1>
@@ -27,7 +27,7 @@ export default function AccountSecurityForm({ verified }) {
                         {userVerified ? "Verified" : "Not Verified"}
                     </p>
 
-                    <button className="bg-blue-500 hover:opacity-75 text-white font-bold rounded px-4 py-2">
+                    <button className="bg-blue-500 hover:opacity-75 text-black dark:text-white font-bold rounded px-4 py-2">
                         {userVerified ? "Verify" : "Resend Verification"}
                     </button>
 
@@ -36,7 +36,7 @@ export default function AccountSecurityForm({ verified }) {
                     </p>
 
                     <button
-                        className="bg-green-500 hover:opacity-75 text-white font-bold rounded px-4 py-2"
+                        className="bg-green-500 hover:opacity-75 text-black dark:text-white font-bold rounded px-4 py-2"
                         onClick={handleChangePassword}
                     >
                         Request Change Password
