@@ -17,6 +17,11 @@ export async function middleware(request) {
                 return NextResponse.redirect(new URL("/user/main", request.url));
             }
             return;
+        } else if (
+            request.nextUrl.pathname &&
+            request.nextUrl.pathname.startsWith("/terms")
+        ) {
+            return NextResponse.next();
         }
 
         // Anything after this is for protected routes, in our case,
