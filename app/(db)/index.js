@@ -76,8 +76,6 @@ export class DatabaseClient {
 
         const result = await this.client.collection('users').update(user.id, data);
 
-
-
         return result;
     }
 
