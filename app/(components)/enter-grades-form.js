@@ -13,7 +13,6 @@ export default function EnterGradesForm({
     const [selectedCourse, setSelectedCourse] = useState("");
     const [selectedGrade, setSelectedGrade] = useState("");
     const [selectedLevel, setSelectedLevel] = useState("");
-    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [error, setError] = useState("");
     const [showError, setShowError] = useState(false);
 
@@ -29,11 +28,6 @@ export default function EnterGradesForm({
 
     const handleLevelChange = (event) => {
         setSelectedLevel(event.target.value);
-    };
-
-    const handleDropdown = (e) => {
-        e.preventDefault();
-        setDropdownOpen(!dropdownOpen);
     };
 
     const handleAddCourse = async (e) => {
@@ -168,52 +162,28 @@ export default function EnterGradesForm({
             )}
 
             <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-2xl flex flex-col">
-                <div className="p-8 text-white flex flex-row gap-6 relative">
-                    <div
-                        className="group flex-grow min-w-60 bg-white rounded-xl text-black p-2 ring-2 ring-gray-500 flex hover:ring-indigo-600"
-                        onClick={handleDropdown}
-                    >
-                        <h1 className="text-2xl font-bold">
-                            Add Course &rarr;
-                        </h1>
-                        <div className="flex-grow"></div>
-                        <button
-                            className="group flex-none px-4 text-black ring-2 ring-gray-500 rounded-xl font-bold py-2 hover:opacity-75"
-                            onClick={handleDropdown}
+                <div className="p-8 text-white">
+                    <div className="w-full flex flex-col space-y-6">
+                        <h1
+                            className="text-2xl font-bold mb-4" 
                         >
-                            <svg
-                                width="16"
-                                height="16"
-                                fill="currentColor"
-                                className="group-hover:rotate-[360deg] transition-transform duration-1000 ease-in-out"
-                                viewBox="0 0 16 16"
-                            >
-                                <path
-                                    fillRule="evenodd"
-                                    d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
-                                />
-                            </svg>
-                        </button>
-                    </div>
-                    <div
-                        className={`absolute top-20 right-8 z-50 p-1 w-2/3 lg:w-1/2 bg-gradient-to-r from-green-400 to-blue-500 rounded-2xl ${
-                            dropdownOpen ? "" : "hidden"
-                        }`}
-                    >
-                        <div className="bg-white w-full h-full flex flex-col space-y-8 p-2 rounded-2xl">
-                            <div className="flex flex-col items-center space-y-2">
+                            Add Course & Grade
+                        </h1>
+
+                        <div className="flex flex-col space-y-4">
+                            <div className="grid md:grid-cols-2 items">
                                 <label
                                     htmlFor="course"
-                                    className="block text-lg font-medium leading-6 text-gray-900"
+                                    className="text-lg font-medium text-black dark:text-white"
                                 >
-                                    Course
+                                    Course Name &rarr;
                                 </label>
                                 <select
                                     id="course"
                                     name="course"
                                     value={selectedCourse}
                                     onChange={handleCourseChange}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                                    className="block md:justify-self-end w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
                                 >
                                     <option value="">Select Course</option>
                                     {fieldsAndCoursesData.map(
@@ -236,19 +206,21 @@ export default function EnterGradesForm({
                                         )
                                     )}
                                 </select>
-
+                            </div>
+                            
+                            <div className="grid md:grid-cols-2">
                                 <label
                                     htmlFor="grade"
-                                    className="block text-lg font-medium leading-6 text-gray-900"
+                                    className="block text-lg font-medium leading-6 text-black dark:text-white"
                                 >
-                                    Grade
+                                    Grade Mark &rarr;
                                 </label>
                                 <select
                                     id="grade"
                                     name="grade"
                                     value={selectedGrade}
                                     onChange={handleGradeChange}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                                    className="block md:justify-self-end w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
                                 >
                                     <option value="">Select Grade</option>
                                     {gradeTypeData.map((grade, index) => (
@@ -264,19 +236,21 @@ export default function EnterGradesForm({
                                         </optgroup>
                                     ))}
                                 </select>
-
+                            </div>
+                            
+                            <div className="grid md:grid-cols-2">
                                 <label
                                     htmlFor="level"
-                                    className="block text-lg font-medium leading-6 text-gray-900"
+                                    className="block text-lg font-medium leading-6 text-black dark:text-white"
                                 >
-                                    Level of Study
+                                    Level of Study &rarr;
                                 </label>
                                 <select
                                     id="level"
                                     name="level"
                                     value={selectedLevel}
                                     onChange={handleLevelChange}
-                                    className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
+                                    className="block md:justify-self-end w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-indigo-600 text-center sm:max-w-xs sm:text-md sm:leading-6"
                                 >
                                     <option value="">Select Level</option>
                                     {levelOfStudyData.map((level, index) => (
@@ -293,16 +267,16 @@ export default function EnterGradesForm({
                                     ))}
                                 </select>
                             </div>
-                            <button
-                                className="bg-green-500 rounded-xl text-black dark:text-white font-bold py-2 px-4 hover:opacity-75 self-center"
-                                onClick={handleAddCourse}
-                            >
-                                Add Course
-                            </button>
                         </div>
+                        <button
+                            className="bg-green-500 rounded-xl text-black dark:text-white font-bold py-2 px-4 hover:opacity-75 self-center md:self-end"
+                            onClick={handleAddCourse}
+                        >
+                            Add Course & Grade
+                        </button>
                     </div>
                 </div>
-                <div className="p-8 text-black dark:text-white flex flex-row gap-6"></div>
+                <div className="p-4"></div>
                 <div className="text-black dark:text-white">
                     <h1
                         className={`px-8 text-2xl font-bold mb-4 ${
