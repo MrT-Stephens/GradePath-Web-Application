@@ -41,7 +41,6 @@ export default function EnterGradesForm({
             setSelectedCourse(""); // Clear selected course
             setSelectedGrade(""); // Clear selected grade
             setSelectedLevel(""); // Clear selected level
-            setDropdownOpen(false); // Close the dropdown
         }
 
         try {
