@@ -33,6 +33,13 @@ export default function EnterGradesForm({
     const handleAddCourse = async (e) => {
         e.preventDefault();
 
+        if (userGrades.items.length >= 30)
+        {
+            setError("You have reached the maximum number of grades you can add. Please remove some grades to add more.");
+            setShowError(true);
+            return;
+        }
+
         if (
             selectedCourse !== "" &&
             selectedGrade !== "" &&
@@ -163,14 +170,12 @@ export default function EnterGradesForm({
             <div className="bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-2xl flex flex-col">
                 <div className="p-8 text-white">
                     <div className="w-full flex flex-col space-y-6">
-                        <h1
-                            className="text-2xl font-bold mb-4" 
-                        >
+                        <h1 className="text-2xl font-bold mb-4">
                             Add Course & Grade
                         </h1>
 
                         <div className="flex flex-col space-y-4">
-                            <div className="grid md:grid-cols-2 items">
+                            <div className="grid md:grid-cols-2">
                                 <label
                                     htmlFor="course"
                                     className="text-lg font-medium text-black dark:text-white"
@@ -206,7 +211,7 @@ export default function EnterGradesForm({
                                     )}
                                 </select>
                             </div>
-                            
+
                             <div className="grid md:grid-cols-2">
                                 <label
                                     htmlFor="grade"
@@ -236,7 +241,7 @@ export default function EnterGradesForm({
                                     ))}
                                 </select>
                             </div>
-                            
+
                             <div className="grid md:grid-cols-2">
                                 <label
                                     htmlFor="level"
@@ -297,22 +302,38 @@ export default function EnterGradesForm({
                                     >
                                         <div className="p-3 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl">
                                             <div className="flex flex-col space-y-2">
-                                                <div className="flex flex-row space-x-4">
-                                                    <div>Course Name:</div>
+                                                <div className="flex flex-col md:flex-row md:space-x-4">
+                                                    <div className="md:w-1/6 md:flex-none">
+                                                        Course Name:
+                                                    </div>
                                                     <div>
                                                         {entry.gradeCourseName}
                                                     </div>
                                                 </div>
-                                                <div className="flex flex-row space-x-4">
-                                                    <div>Grade Mark:</div>
+                                                <div className="flex flex-col md:flex-row md:space-x-4">
+                                                    <div className="md:w-1/6 md:flex-none">
+                                                        Grade Mark:
+                                                    </div>
                                                     <div>{entry.gradeMark}</div>
                                                 </div>
-                                                <div className="flex flex-row space-x-4">
-                                                    <div>Level of Study:</div>
-                                                    <div>
+                                                <div className="flex flex-col md:flex-row md:space-x-4">
+                                                    <div className="md:w-1/6 md:flex-none">
+                                                        Level of Study:
+                                                    </div>
+                                                    <div className="truncate">
                                                         {
                                                             entry.gradeLevelofStudy
                                                         }
+                                                    </div>
+                                                </div>
+                                                <div className="flex flex-col md:flex-row md:space-x-4">
+                                                    <div className="md:w-1/6 md:flex-none">
+                                                        Created At:
+                                                    </div>
+                                                    <div>
+                                                        {new Date(
+                                                            entry.created
+                                                        ).toLocaleString()}
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-col lg:flex-row space-x-0 lg:space-x-4 space-y-2 lg:space-y-0 pt-2">
