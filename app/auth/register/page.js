@@ -1,5 +1,6 @@
 import RegisterForm from "@/app/(components)/register-form";
 import { NavBar, NavBarItem } from "@/app/(components)/navigation-bar";
+import CookieMessageBox from "@/app/(components)/cookie-message-box";
 
 export default function Page() {
     return (
@@ -21,6 +22,10 @@ export default function Page() {
                         <RegisterForm />
                     </div>
                 </div>
+                <CookieMessageBox
+                    title="Cookies"
+                    message="For full functionality of the website you must accept these 'Required' cookies."
+                />
             </main>
         </div>
     );

@@ -21,6 +21,12 @@ export default function Login() {
     const handelSubmit = async (e) => {
         e.preventDefault();
 
+        if (localStorage.getItem("cookieAccepted") === "false") {
+            setError("Please accept the cookie policy");
+            setShowError(true);
+            return;
+        }
+
         setSubmitClicked(true);
 
         if (!emailCorrect) {
