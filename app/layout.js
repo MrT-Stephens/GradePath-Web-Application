@@ -6,10 +6,9 @@ import { SpeedInsights } from "@vercel/speed-insights/next"
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
+    metadataBase: new URL('https://gradepath.vercel.app'),
     title: 'GradePath',
-    icons: {
-      icon: "/GradePathLogo.svg",
-    },
+    images: "/GradePathLogo.svg",
     slogan: 'THE PATH TO SUCESS',
     description: 'GradePath is a platform that helps students find their best path to success.',
     authors: [{ name: 'Thomas Stephens' }, { name: 'Mathew Mann' }, { name: 'James Williams' }],
@@ -20,9 +19,7 @@ export const metadata = {
         url: 'https://www.gradepath.vercel.app/',
         title: 'GradePath',
         description: 'GradePath is a platform that helps students find their best path to success.',
-        icons: {
-          icon: "/GradePathLogo.svg",
-        },
+        images: "/GradePathLogo.svg",
     },
 }
 
