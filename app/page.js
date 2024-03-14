@@ -55,10 +55,7 @@ export default function Home() {
                         </div>
                     </div>
                 </div>
-                <CookieMessageBox
-                    title="Cookies"
-                    message="For full functionality of the website you must accept these 'Required' cookies."
-                />
+                <CookieMessageBox />
             </main>
         </div>
     );

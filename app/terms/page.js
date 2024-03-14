@@ -66,8 +66,14 @@ export default function Page() {
                                     <li>
                                         By using the Website, you consent to the
                                         collection, storage, and processing of
-                                        your personal data as described in our
-                                        Privacy Policy.
+                                        your personal data as described in our{" "}
+                                        <a
+                                            className="text-sky-400 after:content-['_↗'] hover:underline text-bule-500"
+                                            href="/privacy"
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                        .
                                     </li>
                                     <li>
                                         The data we collect from users with
@@ -83,7 +89,14 @@ export default function Page() {
                                         personalized course recommendations,
                                         improve our services, communicate with
                                         users, and for other legitimate purposes
-                                        outlined in our Privacy Policy.
+                                        outlined in our{" "}
+                                        <a
+                                            className="text-sky-400 after:content-['_↗'] hover:underline text-bule-500"
+                                            href="/privacy"
+                                        >
+                                            Privacy Policy
+                                        </a>
+                                        .
                                     </li>
                                 </ul>
                             </li>

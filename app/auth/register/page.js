@@ -22,10 +22,7 @@ export default function Page() {
                         <RegisterForm />
                     </div>
                 </div>
-                <CookieMessageBox
-                    title="Cookies"
-                    message="For full functionality of the website you must accept these 'Required' cookies."
-                />
+                <CookieMessageBox />
             </main>
         </div>
     );

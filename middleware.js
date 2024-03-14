@@ -14,12 +14,16 @@ export async function middleware(request) {
             // If already logged in and the request is to go to the login page,
             // Skip it and redirect to the account page.
             if (isLoggedIn) {
-                return NextResponse.redirect(new URL("/user/main", request.url));
+                return NextResponse.redirect(
+                    new URL("/user/main", request.url)
+                );
             }
             return;
         } else if (
             request.nextUrl.pathname &&
-            request.nextUrl.pathname.startsWith("/terms")
+            (request.nextUrl.pathname.startsWith("/terms") ||
+                request.nextUrl.pathname.startsWith("/cookies") ||
+                request.nextUrl.pathname.startsWith("/privacy"))
         ) {
             return NextResponse.next();
         }
@@ -41,5 +45,7 @@ export async function middleware(request) {
 }
 
 export const config = {
-    matcher: ['/((?!api|_next/static|_next/image|favicon.ico|GradePathLogo.svg).*)'],
+    matcher: [
+        "/((?!api|_next/static|_next/image|favicon.ico|GradePathLogo.svg).*)",
+    ],
 };
