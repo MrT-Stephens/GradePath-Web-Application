@@ -8,7 +8,9 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata = {
     metadataBase: new URL('https://gradepath.vercel.app'),
     title: 'GradePath',
-    images: "/GradePathLogo.svg",
+    icons: {
+      icon: '/GradePathLogo.svg',
+    },
     slogan: 'THE PATH TO SUCESS',
     description: 'GradePath is a platform that helps students find their best path to success.',
     authors: [{ name: 'Thomas Stephens' }, { name: 'Mathew Mann' }, { name: 'James Williams' }],
