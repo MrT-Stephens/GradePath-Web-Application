@@ -7,10 +7,20 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
     title: 'GradePath',
+    image: '/GradePathLogo.svg',
     slogan: 'THE PATH TO SUCESS',
     description: 'GradePath is a platform that helps students find their best path to success.',
     authors: [{ name: 'Thomas Stephens' }, { name: 'Mathew Mann' }, { name: 'James Williams' }],
-    icon: '/GradePathLogo.svg',
+
+    openGraph: {
+        type: 'website',
+        locale: 'en_US',
+        url: 'https://www.gradepath.vercel.app/',
+        site_name: 'GradePath',
+        title: 'GradePath',
+        description: 'GradePath is a platform that helps students find their best path to success.',
+        image: '/GradePathLogo.svg',
+    },
 }
 
 export default function RootLayout({ children }) {
