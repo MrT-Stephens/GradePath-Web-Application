@@ -16,7 +16,7 @@ export const metadata = {
         type: 'website',
         locale: 'en_US',
         url: 'https://www.gradepath.vercel.app/',
-        site_name: 'GradePath',
+        title: 'GradePath',
         title: 'GradePath',
         description: 'GradePath is a platform that helps students find their best path to success.',
         image: '/GradePathLogo.svg',
