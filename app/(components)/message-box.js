@@ -38,7 +38,7 @@ export default function MessageBox({ title, message, onClose }) {
             <div className="flex items-center flex-shrink-0">
                 <button
                     className="flex-shrink-0 inline-flex justify-center w-7 h-7 items-center text-gray-400 hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 dark:hover:bg-gray-600 dark:hover:text-white"
-                    onClick={() => {
+                    onClick={(e) => {
                         setIsVisible(false);
 
                         setTimeout(() => {

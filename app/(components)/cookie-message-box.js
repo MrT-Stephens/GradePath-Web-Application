@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 
 export default function CookieMessageBox({ title, message }) {
     const [isVisible, setIsVisible] = useState(false);
+    const [remove, setRemove] = useState(false);
 
     useEffect(() => {
         if (localStorage.getItem("cookieAccepted") === "true") {
@@ -11,9 +12,10 @@ export default function CookieMessageBox({ title, message }) {
         }
 
         setIsVisible(true);
+        setRemove(true);
     }, []);
 
-    return (
+    return remove ? (
         <div
             className={`fixed bottom-0 right-0 z-50 lg:max-w-3xl flex flex-row justify-between p-4 m-10 bg-gradient-to-r from-[#D6DBDC] dark:from-[#000000] to-[#FFFFFF] dark:to-[#141414] rounded-xl border-2 border-gray-500 transition-opacity duration-1000 ease-in-out ${
                 isVisible ? "opacity-100" : "opacity-0"
@@ -37,6 +39,10 @@ export default function CookieMessageBox({ title, message }) {
                     onClick={() => {
                         setIsVisible(false);
                         localStorage.setItem("cookieAccepted", true);
+
+                        setTimeout(() => {
+                            setRemove(false);
+                        }, 1000);
                     }}
                 >
                     Accept
@@ -46,11 +52,17 @@ export default function CookieMessageBox({ title, message }) {
                     onClick={() => {
                         setIsVisible(false);
                         localStorage.setItem("cookieAccepted", false);
+
+                        setTimeout(() => {
+                            setRemove(false);
+                        }, 1000);
                     }}
                 >
                     Decline
                 </button>
             </div>
         </div>
+    ) : (
+        <></>
     );
 }
