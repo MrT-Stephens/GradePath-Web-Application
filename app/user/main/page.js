@@ -5,6 +5,7 @@ import LevelOfStudy from "@/app/(data)/level-of-study";
 import GradeType from "@/app/(data)/grade";
 import FieldsAndCourses from "@/app/(data)/fields-and-courses";
 import { NavBar, NavBarItem } from "@/app/(components)/navigation-bar";
+import GenerateTreeViewButon from "@/app/(components)/generate-tree-view-button";
 
 const GetUserName = async () => {
     const user = await db.getUser(cookies());
@@ -22,6 +23,8 @@ export default async function Page() {
 
     return (
         <div>
+
+
             {/* Navigation Bar */}
             <NavBar title={`Hello, ${userName}!`}>
                 <NavBarItem href="/#home" text="Home" />
@@ -31,7 +34,8 @@ export default async function Page() {
             </NavBar>
 
             {/* Main Content */}
-            <main className="flex flex-col min-h-screen items-center justify-center px-5 pb-10 pt-24">
+            <main className="flex flex-col min-h-screen items-center justify-center px-5 pb-10 pt-24 space-y-20">
+                <GenerateTreeViewButon />
                 <EnterGradesForm
                     levelOfStudyData={LevelOfStudy}
                     gradeTypeData={GradeType}
