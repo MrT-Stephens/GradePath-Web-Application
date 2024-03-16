@@ -1,6 +1,6 @@
 
 <h1 align="center">
-  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/public/GradePathLogo.svg" alt="drawing" width="200"/>
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/blob/main/public/GradePathLogo.svg" alt="drawing" width="200"/>
   <br>
   GradePath Web Application (University Year 2 Group Project)
   <br>
