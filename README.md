@@ -93,6 +93,12 @@ The account settings page allows users to edit their user information or delete 
 
 ## Installation
 
+To install this web application, you must clone the repository through the commands below, or you can do it using the repository URL in most IDEs.
+```
+# Clone the repository.
+git clone https://github.com/MrT-Stephens/GradePath-Web-Application.git
+```
+
 ## How to Run
 
 ## Licence 
