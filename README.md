@@ -117,6 +117,14 @@ If this is successful, the Pocketbase server can run using the following command
 # Start Pocketbase
 ./Pocketbase/pocketbase serve
 ```
+Once Pocketbase is hosted, the admin dashboard can be accessed at `http://127.0.0.1:8090/_/`. You should then see a login page for Pocketbase, and if you enter the details below, you will be in the database.
+```
+# Email
+admin@gradepath.com
+
+# Password
+Gradepath123
+```
 
 ## Licence 
 
