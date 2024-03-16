@@ -66,6 +66,11 @@ The register page allows a user to register for an account. The user can get an 
 
 ### Enter Grades Page
 
+The enter grades page allows users to enter their current or predicted grades by using the drop downs to select a course name, grade mark, and level of study. Once a grade is added, it will be displayed in the list of grades. Also, a grade can be removed by clicking the remove button on the grade.
+
+> **Note**
+> The course advisments generation button does not work; it is there for show purposes.
+
 ##### Without Grades Entered
 
 <p align="center">
@@ -78,9 +83,16 @@ The register page allows a user to register for an account. The user can get an 
   <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/c76069e4-85dd-418d-9a50-52c77abcee8c" alt="drawing" align="center"/>
 </p>
 
+### Account Settings Page
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/5013c2e0-5476-4dbf-a2ff-bb050e42f072" alt="drawing" align="center"/>
+</p>
+
 ## Installation
 
 
 ## How to Run
 
 # Licence 
+
