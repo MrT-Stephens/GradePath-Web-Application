@@ -101,5 +101,22 @@ git clone https://github.com/MrT-Stephens/GradePath-Web-Application.git
 
 ## How to Run
 
+To run the web application, first ensure that you have a version of [Node.js](https://nodejs.org/) installed; if not, please install [Node.js](https://nodejs.org/). If [Node.js](https://nodejs.org/) is installed, the web application development server can run with the below commands.
+```
+# Enter the directory.
+cd GradePath-Web-Application
+
+# Install packages.
+npm install packages
+
+# Start the development server.
+npm run dev
+```
+If this is successful, the Pocketbase server can run using the following command.
+```
+# Start Pocketbase
+./Pocketbase/pocketbase serve
+```
+
 ## Licence 
 
