@@ -85,14 +85,15 @@ The enter grades page allows users to enter their current or predicted grades by
 
 ### Account Settings Page
 
+The account settings page allows users to edit their user information or delete their account. The edit user information does work, as it will change the information inside the database, but it will not change locally in the browser, and the delete account button doesn't work; it's only for show.
+
 <p align="center">
   <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/5013c2e0-5476-4dbf-a2ff-bb050e42f072" alt="drawing" align="center"/>
 </p>
 
 ## Installation
 
-
 ## How to Run
 
-# Licence 
+## Licence 
 
