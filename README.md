@@ -18,7 +18,7 @@
 </p>
 
 <p align="center">
-  <img src="https://github.com/MrT-Stephens/Csv-to-Application/blob/master/Images/CSV_to_App_Image.png" alt="drawing" align="center"/>
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/76446d53-63fd-40f5-a749-b60268976c83" alt="drawing" align="center"/>
 </p>
 
 ## Summary
