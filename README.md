@@ -50,13 +50,36 @@ This Year 2 group project is a course advisor web application that will allow us
 
 ### Home Page
 
-The homepage was built to look clean and modern, allowing the user to log in directly from the homepage. The login also validates both inputs to ensure the email is correct and the password is secure.
+The homepage was built to look clean and modern. It allows the user to log in directly from the homepage. The login also validates both inputs to ensure the email is correct and the password is secure.
 
 <p align="center">
   <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/76446d53-63fd-40f5-a749-b60268976c83" alt="drawing" align="center"/>
 </p>
 
+### Register Page
+
+The register page allows a user to register for an account. The user can get an account by entering their first name, last name, date of birth, address line one, address line two, city, postcode, email address, password, and confirm password. All user inputs are fully validated to ensure no incorrect inputs can be entered.
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/c70c87ae-c3cc-402e-8099-7ffafe3ad26c" alt="drawing" align="center"/>
+</p>
+
+### Enter Grades Page
+
+##### Without Grades Entered
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/bcc8970c-de85-41bb-892c-27b05286ee61" alt="drawing" align="center"/>
+</p>
+
+##### With Grades Entered
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/c76069e4-85dd-418d-9a50-52c77abcee8c" alt="drawing" align="center"/>
+</p>
+
 ## Installation
+
 
 ## How to Run
 
