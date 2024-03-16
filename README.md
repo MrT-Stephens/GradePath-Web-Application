@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+<h1 align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/public/GradePathLogo.svg" alt="drawing" width="200"/>
+  <br>
+  GradePath Web Application (University Year 2 Group Project)
+  <br>
+</h1>
 
-First, run the development server:
+<h4 align="center">A desktop application which converts CSV (Comma Separated Values) to many other types!</h4>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+<p align="center">
+  <a href="#key-features">Key Features</a> ▪︎
+  <a href="#installation">Installation</a> ▪︎
+  <a href="#how-to-use">How To Use</a> ▪︎
+  <a href="#future-improvements">Future Improvements</a> ▪︎
+  <a href="#libraries-used">Libraries Used</a>
+</p>
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/Csv-to-Application/blob/master/Images/CSV_to_App_Image.png" alt="drawing" align="center"/>
+</p>
+
+## Key Features
+* Takes CSV files which include a header in the format:
+```csv
+column1,column2,column3,column4
+item1,item2,item3,item4
+item5,item6,item7,item8
 ```
+* The CSV files can include double-quoted strings as shown below:
+```csv
+column1,"column2",column3,column4
+item1,"item2, item2",item3,"it"e"m4"
+item5,item6,item7,item8
+```
+> **Note**
+> Every double quote MUST have an ending double quote, does support double quotes within double quotes aswell.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+* Converts the CSV data to:
+   - CSV with different delimiters.
+   - SQL insert statements.
+   - Ascii tables.
+   - Markdown tables.
+   - XML.
+   - HTML tables.
+   - LaTex tables.
+   - JSON objects, arrays, etc.
+   - PHP arrays.
+   - Ruby arrays.
+   - Multi-line data.
+   - YAML.
+   - BBcode.
+   - XLSX.
+   - Many more in the future!
+* Ability to change the format of the inserted data (click the advanced view button):
+   - Uppercase all the data.
+   - Lowercase all the data.
+   - Capitalise all the data.
+   - Remove whitespace from all the data.
+   - Transpose all the data.
+* If you don't like the result of the changed data you can use the Undo and Redo buttons to undo or redo any changes made to the data.
+* By clicking on the column names in the list view you can sort by that column into ascending order by clicking once or descending order by clicking twice.
+* Ability to copy the generated data to the clipboard or if you prefer you can download the generated data.
+* Ability to edit the data using the edit data dialog by clicking on the '**Edit Data**' button.
+* Has a light mode or dark mode aperence. It will follow the systems aperence.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Installation
+* To install the application, please download the [latest release](https://github.com/MrT-Stephens/Csv_to-Desktop_Application/releases).
+  Then extract the archive and start the '.exe' and it should all just work :).
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## How To Use
+* If you would like some information on how to use the application please view the '[HowToUse.md](https://github.com/MrT-Stephens/Csv_to-Desktop_Application/blob/master/HowToUse.md)' file.
 
-## Learn More
+## Future Improvements
+* Currently only supports Windows, but in future hoping to support Mac OS, and Linux.
+* Add the ability to generate random data within the application.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Libraries Used
+* [wxWidgets](https://www.wxwidgets.org/) used for the UI components of the application.
+* [libxlsxwriter](https://github.com/jmcnamara/libxlsxwriter) used for creating an outputting xlsx files.
