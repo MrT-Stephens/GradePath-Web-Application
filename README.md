@@ -48,6 +48,14 @@ This Year 2 group project is a course advisor web application that will allow us
 
 ## Pages of the App
 
+### Home Page
+
+The homepage was built to look clean and modern, allowing the user to log in directly from the homepage. The login also validates both inputs to ensure the email is correct and the password is secure.
+
+<p align="center">
+  <img src="https://github.com/MrT-Stephens/GradePath-Web-Application/assets/92452307/76446d53-63fd-40f5-a749-b60268976c83" alt="drawing" align="center"/>
+</p>
+
 ## Installation
 
 ## How to Run
